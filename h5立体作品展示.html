@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style>
+body{
+	overflow: hidden;
+}
+*{
+	margin:0;padding:0;list-style:none;
+}
+p{
+	text-align:center;margin-top:30px;
+}
+.list{
+	width:300px;height:400px;
+	margin:30px auto;
+	position: relative;
+	-webkit-transform-style:preserve-3d;
+}
+li{
+	width:100%;height:100%;background:pink;
+	color:#000;font:bold 50px "宋体";
+	text-align:center;line-height: 400px;
+	position:absolute;top:0;left:0;
+	display: none;transition:1s all ease;
+	opacity: 0;
+
+}
+.now{z-index:1;display:block;opacity:1;}
+.pre{
+	-webkit-transform: perspective(800px)
+	translateX(-200px) rotateY(45deg);
+	opacity:0.6;display: block;
+
+}
+.pre2{
+	-webkit-transform: translateX(-250px)
+	rotateY(45deg);
+	display: block;
+}
+.next{
+	-webkit-transform: perspective(800px)
+	translateX(200px) rotateY(-45deg);
+	display: block;opacity: 0.6;
+}
+.next2{
+	-webkit-transform: perspective(800px)
+	translateX(250px) rotateY(-45deg);
+	display: block;
+}
+
+</style>
+<script>
+window.onload = function(){
+	var aLi=document.querySelectorAll('li');
+	var aBtn=document.querySelectorAll('input');
+	var arrCname=[];
+	var bReady=false;
+	for(var i=0;i<aLi.length;i++){
+		arrCname.push(aLi[i].className);
+	}
+	aBtn[1].onclick=function(){
+		if(bReady)return;
+		bReady=true;
+		arrCname.unshift(arrCname.pop());
+		tab();
+	};
+	aBtn[0].onclick=function(){
+		if(bReady)return;
+		bReady=true;
+		arrCname.push(arrCname.shift());
+		tab();
+	};
+	function tab(){
+		var oList=document.querySelector('.list');
+		for(var i=0; i<aLi.length;i++){
+			aLi[i].className=arrCname[i];
+		}
+		function tranEnd(){
+			oList.removeEventListener('transitionend',tranEnd,false);
+			bReady = false;
+		}
+		oList.addEventListener('transitionend',tranEnd,false);
+	}
+
+};
+
+</script>
+</head>
+<body>
+<p>
+	<input type="button" value="上一个"/>
+	<input type="button" value="下一个"/>
+</p>
+<ul class="list">
+	<li class="pre2">1</li>	
+	<li class="pre">2</li>
+	<li class="now">3</li>	
+	<li class="next">4</li>
+	<li class="next2">5</li>
+	<li>6</li>
+</ul>
+</body>
+</html>
