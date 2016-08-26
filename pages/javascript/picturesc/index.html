@@ -1,0 +1,116 @@
+
+
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无缝轮播</title>
+<link href="css.css" rel="stylesheet" type="text/css" />
+<script src="../move8.js"></script>
+<script>
+window.onload=function(){
+	var oPlay=document.getElementById('play');
+	var aHead=oPlay.children[2].children;
+	var aContent=oPlay.children[3];	
+	var oNext=oPlay.getElementsByClassName('next')[0];
+	var oPrev=oPlay.getElementsByClassName('prev')[0];
+	var now=0;
+	var ready=true;
+	
+	aContent.innerHTML+=aContent.innerHTML;//复制一份
+	aContent.style.width=aContent.children.length*470+'px';
+	
+	for(var i=0;i<aHead.length;i++){
+		(function(index){
+			aHead[i].onclick=function(){
+				now=index;
+				tab();
+			};	
+		})(i);
+	}
+	
+	function tab(){
+		for(var i=0;i<aHead.length;i++){
+			aHead[i].className='';	
+		}
+		if(now==aHead.length){
+			aHead[0].className='active';	
+		}else{
+			aHead[now].className='active';		
+		}
+		move(aContent,{left:-now*470},{fn:function(){
+			//无缝滚动的效果为什么在此处加向左运动判断？
+			//1、自动播放、next按钮包括数字按钮都是向左运动、prev虽向右运动但它的判断条件会阻止进到这个判断里面，对它没有影响;
+			//2、与自动连续的无缝滚动不同，带有逐帧运动效果的无缝运动向左运动到头需要拉回图片时，要等到拼接图片的第一张完成运动过程才能拉回
+			//所以要放到运动函数的后面等到判断条件成立且已经被用到了运动以后结束的瞬间再执行拉回和重新将判断条件变为0的操作；
+			//3、向右运动的prev与此不同，它是先拉回再运动，向左是先运动再拉回；
+			ready=true;
+			if(now==aHead.length){
+				aContent.style.left=0;
+				now=0;
+			}
+		}});
+			
+	}
+	
+	oNext.onclick=next;
+	
+	function next(){
+		//加ready是为了等到每帧运动完成后才能再次操作，防止一些bug；
+		if(!ready) return;
+		ready=false;
+		now++;//计算
+		
+		tab();//使用
+		
+		console.log(now);
+	};
+	oPrev.onclick=function(){
+		if(!ready) return;
+		ready=false;
+		//向右运动时、最后需要切换图片的时候是先拉回再运动，所以不用等到运动执行结束再判断，可以直接判断；
+		if(now==0){
+			aContent.style.left= -aContent.offsetWidth/2+'px';
+			now=aHead.length-1;
+		}else{
+			now--;
+		}
+		
+		tab();
+	};
+	
+	var timer=setInterval(next,1000);
+	oPlay.onmouseover=function(){
+		clearInterval(timer);	
+	};
+	oPlay.onmouseout=function(){
+		timer=setInterval(next,1000);
+	};
+	
+};
+</script>
+</head>
+
+<body>
+
+<div class="box" id="play">
+    <p class="prev">&laquo;</p>
+    <p class="next">&raquo;</p>
+    <ol>
+        <li class="active">0</li>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ol>
+    <ul>
+        <li><a href="#"><img src="images/1.jpg" alt="广告一" /></a></li>
+        <li><a href="#/"><img src="images/2.jpg" alt="广告二" /></a></li>
+        <li><a href="#"><img src="images/3.jpg" alt="广告三" /></a></li>
+        <li><a href="#"><img src="images/4.jpg" alt="广告四" /></a></li>
+        <li><a href="#"><img src="images/5.jpg" alt="广告五" /></a></li>
+    </ul>
+</div>
+
+</body>
+</html>

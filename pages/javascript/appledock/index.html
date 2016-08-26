@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>appleDock</title>
+	<style>
+	body{background: #efefef;}
+	#div1{width: 600px; height:600px; position:absolute; left:50%; margin-left: -300px; top:100px; text-align:center; background: url(img2/mac.png) no-repeat; background-size: 100% auto;}
+	#div2 {position: absolute; bottom:45%; left: 120px;}
+	#div1 img{width:64px;}
+	</style>
+	<script>
+	window.onload=function(){
+		var oDiv=document.getElementById('div1');
+		var oDiv2=document.getElementById('div2');
+		var aImg=oDiv.getElementsByTagName('img');
+		document.onmousemove=function(ev){
+			var oEvt=ev||event;
+			for(var i=0; i<aImg.length; i++){
+				var a=aImg[i].offsetLeft+oDiv.offsetLeft+oDiv2.offsetLeft+aImg[i].offsetWidth/2-oEvt.pageX;
+				var b=aImg[i].offsetTop+oDiv.offsetTop+oDiv2.offsetTop+aImg[i].offsetHeight/2-oEvt.pageY;
+				var c=Math.sqrt(a*a+b*b);
+				var scale=1-c/300;
+				if(scale<0.5) scale=0.5;
+				aImg[i].style.width=128*scale+'px';
+			}
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<div id=div2>
+			<img src="img2/1.png"/>
+			<img src="img2/2.png"/>
+			<img src="img2/3.png"/>
+			<img src="img2/4.png"/>
+			<img src="img2/5.png"/>
+		</div>
+	</div>
+</body>
+</html>

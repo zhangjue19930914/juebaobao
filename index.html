@@ -1,106 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-<style>
-body{
-	overflow: hidden;
-}
-*{
-	margin:0;padding:0;list-style:none;
-}
-p{
-	text-align:center;margin-top:30px;
-}
-.list{
-	width:300px;height:400px;
-	margin:30px auto;
-	position: relative;
-	-webkit-transform-style:preserve-3d;
-}
-li{
-	width:100%;height:100%;background:red;
-	color:#000;font:bold 50px "宋体";
-	text-align:center;line-height: 400px;
-	position:absolute;top:0;left:0;
-	display: none;transition:1s all ease;
-	opacity: 0;
 
-}
-.now{z-index:1;display:block;opacity:1;}
-.pre{
-	-webkit-transform: perspective(800px)
-	translateX(-200px) rotateY(45deg);
-	opacity:0.6;display: block;
-
-}
-.pre2{
-	-webkit-transform: translateX(-250px)
-	rotateY(45deg);
-	display: block;
-}
-.next{
-	-webkit-transform: perspective(800px)
-	translateX(200px) rotateY(-45deg);
-	display: block;opacity: 0.6;
-}
-.next2{
-	-webkit-transform: perspective(800px)
-	translateX(250px) rotateY(-45deg);
-	display: block;
-}
-
-</style>
-<script>
-window.onload = function(){
-	var aLi=document.querySelectorAll('li');
-	var aBtn=document.querySelectorAll('input');
-	var arrCname=[];
-	var bReady=false;
-	for(var i=0;i<aLi.length;i++){
-		arrCname.push(aLi[i].className);
-	}
-	aBtn[1].onclick=function(){
-		if(bReady)return;
-		bReady=true;
-		arrCname.unshift(arrCname.pop());
-		tab();
-	};
-	aBtn[0].onclick=function(){
-		if(bReady)return;
-		bReady=true;
-		arrCname.push(arrCname.shift());
-		tab();
-	};
-	function tab(){
-		var oList=document.querySelector('.list');
-		for(var i=0; i<aLi.length;i++){
-			aLi[i].className=arrCname[i];
-		}
-		function tranEnd(){
-			oList.removeEventListener('transitionend',tranEnd,false);
-			bReady = false;
-		}
-		oList.addEventListener('transitionend',tranEnd,false);
-	}
-
-};
-
-</script>
+    <meta charset="UTF-8">
+    <title>Ranshaw resume</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="shortcut icon" href="ranshaw_favicon.ico" />
+    <script src="js/red_heart.js"></script>
+    <script src="js/sea.js"></script>
+    <script>
+        seajs.use("main.js");
+    </script>
 </head>
-<body>
-<p>
-	<input type="button" value="上一个"/>
-	<input type="button" value="下一个"/>
-</p>
-<ul class="list">
-	<li class="pre2">1</li>	
-	<li class="pre">2</li>
-	<li class="now">3</li>	
-	<li class="next">4</li>
-	<li class="next2">5</li>
-	<li>6</li>
-</ul>
+<body >
+<!-- Header
+================================================== -->
+<div id="screenBox">
+<div id="home">
+    <nav id="nav_wrap">
+        <!-- 导航开始
+    ---------------------------------------->
+        <ul id="nav" class="nav clearfix  ">
+            <li class="current"><a   href="javascript:">首页</a></li>
+            <li><a   href="javascript:">基本资料</a></li>
+            <li><a   href="javascript:">专业技能</a></li>
+            <li><a   href="javascript:">作品展示</a></li>
+            <li><a   href="javascript:">数据交互</a></li>
+        </ul>
+    </nav>
+    <!-- 首屏内容
+   ---------------------------------------->
+        <div id="banner" class="banner_text">
+            <h2 id="responsive_headline">The future has landed</h2>
+            <h4 id="text_ready">I'm ready&nbsp!</h4>
+            <div id="clock">
+                <div id="hou"></div>
+                <div id="min"></div>
+                <div id="sec"></div>
+                <div id="cap"></div>
+            </div>
+            <!--<img id="banner_moon" src="images/moon.jpg"/>-->
+            <div id="star1"></div>
+        </div>
+    <div id="canvasZone">
+        <canvas id="myCanvas" width="200px" height="200px"></canvas>
+    </div>
+     <!--切换页面按钮
+     -------------------------------------->
+    <p id="next" class="scrolldown">
+        <a   class="smoothscroll" href="#basicInformation"></a>
+    </p>
+</div>
+
+    <!--首屏结束
+     -------------------------------------->
+    <!--基本信息开始
+ -------------------------------------->
+    <div id="basicInformation">
+            <div class="com_eff" id="com_eff">
+               <div id="boxShow"><span>点击归位</span></div>
+               <div id="bubble1"></div>
+               <div id="bubble2"></div>
+                <ul class="com_list" id="com_list">
+                </ul>
+            </div>
+    </div>
+    <!--基本信息结束
+ -------------------------------------->
+    <!--专业技能开始
+  -------------------------------------->
+    <div id="professionalSkill">
+        <div id="box" style="  width: 300px;height: 300px; position: absolute; bottom:30%; left:50%; margin-left:-130px;">
+            <div class="front">
+                <h2>CSS&HTML</h2>
+                    1.有良好的编码习惯和命名规范。</br>
+                    2.对语义化的HTML有一定的见解。</br>
+                    3.理解W3C标准，并能熟练运用。</br>
+                    4.能够根据产品需求，熟练运用HTML和CSS,产出兼容主流浏览器的页面。</br>
+            </div>
+            <div class="back"><h2>JS</h2>
+                    1.熟练掌握原生JS,能够用原生JS实现网站上常见的效果。</br>
+                    2.能够运用jS实现各种动态效果。</br>
+                    3.熟练掌握闭包，面向对象机制。</br>
+                    4.熟练使用AJAX和JSONP进行数据交互。
+            </div>
+            <div class="top"><h2>HTML5&CSS3</h2>
+                    1.熟练掌握H5和CSS3新标签的特性。</br>
+                    2.能够使用canvas实现时钟，进度条，图标等效果。 </br>
+                    3.可以熟练使用CSS3实现绚丽的3D效果，如翻转、缩放等。
+            </div>
+            <div class="bottom"><h2>移动端</h2>
+                    1.了解移动端的各种布局，能够用rem布局制作自适应页面。 </br>
+                    2.了解手机端的触屏事件和Zepto.JS的使用。 </br>
+                    3.了解PhoneGap制作混合APP的流程。
+            </div>
+            <div class="left"><h2>库和插件</h2>
+                    1.能够熟练使用jQuery和Bootstrap进行开发。</br>
+                    2.了解AngularJS的使用。</br>
+                    3.能够使用less编写css代码。
+            </div>
+            <div class="right"><h2>数据交互</h2>
+                    1.熟悉AJAX和JSONP的原理，能够进行手动封装。</br>
+                    2.了解WebSocket进行数据交互的过程。</br>
+                    3.了解WebWork多线程处理流程。
+            </div>
+        </div>
+        <div>
+            <ul id="oC1" class="sk_canvas_box">
+                <li class="show_box "><canvas class="front" ></canvas></li>
+                <li class="show_box "><canvas class="back" ></canvas></li>
+                <li class="show_box "><canvas class="top"></canvas></li>
+            </ul>
+            <ul id="oC2" class="sk_canvas_box">
+                <li class="show_box "><canvas class="bottom"></canvas></li>
+                <li class="show_box "><canvas class="left"></canvas></li>
+                <li class="show_box "><canvas class="right"></canvas></li>
+            </ul>
+        </div>
+    </div>
+    <!--专业技能结束
+   -------------------------------------->
+    <div id="show">
+        <div id="div1">
+            <strong id="div2"></strong>
+        </div>
+    </div>
+    <!--数据交互开始
+    -------------------------------------->
+    <div id="contact_box">
+            <div class="page6con">
+                <ul class="contact" id="contact">
+                    <li class="phone">
+                        <img src="images/phone.gif">
+                        <span>18626334393</span>
+                    </li>
+                    <li class="qq">
+                        <a href="pages/dataint/baidusearch/index.html" target="_blank">
+                        <img src="images/jsonp.jpg">
+                        <span>百度搜索</span>
+                        </a>
+                    </li>
+                    <li class="email">
+                        <a href="pages/dataint/mywish/index.html" target="_blank">
+                        <img src="images/ajax.png">
+                        <span>许愿墙</span>
+                        </a>
+                    </li>
+                    <li class="sina">
+                        <a href="pages/dataint/weibo/index.html" target="_blank">
+                        <img src="images/ajax.png">
+                        <span>发微博</span>
+                        </a>
+                    </li>
+                    <li class="weixin">
+                        <a href="pages/dataint/phonesearch/index.html" target="_blank">
+                        <img src="images/jsonp.jpg">
+                        <span>手机号运势</span>
+                        </a>
+                    </li>
+                </ul>
+                <a href="javascript:;" id="prev1"><img src="images/prev.png"></a>
+                <a href="javascript:;" id="next1"><img src="images/next2.png"></a>
+            </div>
+    </div>
+    <!--数据交互结束
+    -------------------------------------->
+</div>
 </body>
 </html>
