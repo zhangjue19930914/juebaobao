@@ -1,0 +1,166 @@
+body{ font-family:'Microsoft Yahei';}
+.hid{ width:16rem; height:2.5rem; 
+	background:#CCC; 
+	background:-webkit-linear-gradient(#FFF,#ebebeb); position:relative;}
+.back{
+	height:1.5rem;width: 3.05rem;	
+	background:url(../img/back.png);
+	position: absolute;left:0.5rem;
+	top:0.5rem;background-size:100%;
+}
+.logo{ width:3.7rem; height:1rem;
+	 background:url(../img/logo.png); 
+	 background-size:100%; 
+	 position:absolute; top:50%; left:50%; 
+	 margin-left:-1.85rem; margin-top:-0.5rem;}
+/*头部结束*/
+.banner{width:16rem;}
+.banner img{ width:16rem;vertical-align: top;}
+.banner ul{  display:-webkit-box; 
+			-webkit-box-pack:center; 
+			padding-top:0.5rem;}
+.banner li{ width:0.25rem; height:0.25rem; 
+	border-radius:50%; background:#a9a9a9; 
+	margin:0 0.125rem;}
+.banner .active{ background:#F40;}
+/*banner图结束*/
+
+.list{width:16rem;overflow: hidden;}
+
+.list li{
+	float: left;float: left;
+	box-sizing:border-box;
+	margin-top:1.05rem;
+	margin-right:1.8rem;
+	
+}
+.list .list_firstl{margin-left:1.35rem;}
+.list .list_firstr{margin-right:-0.45rem;}
+
+
+.list a{
+	display: block;width:2rem;height:2rem;
+	background-size:100%;
+}
+
+.icon1{
+	background: url(../img/icon1.png) no-repeat 50% 50%;
+
+}
+.icon2{
+	background: url(../img/icon2.png) no-repeat 50% 50%;
+}
+.icon3{
+	background: url(../img/icon3.png) no-repeat 50% 50%;
+}
+.icon4{
+	background: url(../img/icon4.png) no-repeat 50% 50%;
+}
+.icon5{
+	background: url(../img/icon5.png) no-repeat 50% 50%;
+}
+.icon6{
+	background: url(../img/icon6.png) no-repeat 50% 50%;
+}
+.icon7{
+	background: url(../img/icon7.png) no-repeat 50% 50%;
+}
+.icon8{
+	background: url(../img/icon8.png) no-repeat 50% 50%;
+}
+.list h3{ font-size:0.6rem;
+	 font-weight:normal;text-align:center;padding-top: 0.5rem;} 
+/*彩色icon结束*/
+
+/*主体开始*/
+.content{width:15rem; padding:0.5rem;}
+.content .title{
+	margin-top:0.65rem;
+	border-bottom:0.1rem #dcdcdc solid;
+	font-size: 0.7rem;overflow: hidden;			
+}
+.title span{margin-bottom:0.5rem;}
+.title .title_name{
+	border-left:0.1rem solid #d51938;
+	padding-left: 0.5rem;
+}
+.title .top{float: right;border-left: }
+
+/*热卖开始*/
+.number{width:1.5rem; height:3rem; 
+	background:#e00202; text-align:center; 
+	line-height:3rem; font-size:1.2rem;
+	float: left;font-weight: bold;color:#fff;
+}
+.shop{height:3rem;float: left;}
+.info{float:left; font-size:0.6rem; 
+		line-height:0.9rem; margin-top:0.55rem; 
+		color:#999999; margin-left:0.55rem;
+
+}	
+
+.red{color:#c7223d;}
+.through{text-decoration:line-through;}
+.clearfix{background:#f4f4f4; 
+		overflow:hidden; margin-top:0.5rem;}
+.price{ background:url(../img/tip.png) 
+		right  center no-repeat; 
+		background-size:6.5px 11px; 
+		margin-right:0.5rem; margin-top:1rem; 
+		color:#d51938; font-size:0.8rem; 
+		float:right; padding-right:0.8rem;
+		font-weight: bold;
+	}
+/*热卖结束*/
+.tt{position:relative;
+	margin-top:0.5rem;
+	margin-bottom:0.5rem;
+	height:2.5rem;background:#f5f5f5;}
+.title_1{
+	display:block;
+	height:2.5rem;
+	color:666666;
+	font-size:0.7rem;text-align:center;line-height:2.5rem;	
+}
+.tip{position:absolute;right:0.5rem;bottom:1rem;}
+
+.p-list{ overflow:hidden; 
+	margin-top:0.5rem; 
+	border-top:1px solid #EEE;}
+.p-list dd,.p-list dt{ 
+	float:left; width:3.7rem; 
+	position:relative;}
+.p-list dt{ 
+	height:8.75rem; background:#ff3900; 
+	font-size:0.7rem; color:#FFF; 
+	text-align:center;}
+
+.p-list p img{width:3.7rem;height:8.8rem;}
+.p-list dd{ 
+	z-index:99999;
+	box-sizing:border-box; 
+	height:2.2rem; text-align:center; 
+	line-height:2.2rem; font-size:.7rem; 
+	border-bottom:1px solid #EEE; 
+	border-right:1px solid #EEE;
+	color:#999999;font-size:0.7rem;
+}
+.p-list .bh{color:#d51942;}
+.sanlian li{float:left;}
+.sanlian img{width:5rem;height:3.95rem;}
+
+/*品牌结束 身体结束*/
+
+footer{background:#f8f8f8;color:#333333;
+	font-size:0.7rem;margin-top:0.5rem;
+	height:2.2rem;
+	
+	display:block;
+}
+
+footer .dl{padding-left:0.7rem;
+	padding-right:1.1rem;}
+
+footer .dr{float:right;padding-right:1.6em;}
+footer .dr img{right:0.75rem;top:0.7rem;}
+/*尾巴结束*/

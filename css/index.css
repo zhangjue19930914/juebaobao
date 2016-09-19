@@ -1,0 +1,657 @@
+*{
+	margin:0;
+	padding:0;
+	list-style: none;
+}
+
+body{
+	font-family: "宋体";
+}
+a{
+	text-decoration: none;
+}
+
+.box{
+	width:100%;
+	/*height:667px;*/
+	overflow:hidden;
+	position:relative;
+}
+.prev{
+	position:absolute;
+	width:30px;
+	height:60px;
+	background:url(../images/prev.png);
+	left:0;
+	top:50%;
+	margin-top:-30px;
+	text-indent:-9999px;
+	z-index:9999;
+}
+.next{
+	position:absolute;
+	width:30px;
+	height:60px;
+	background:url(../images/next.png);
+	right:0;
+	top:50%;
+	margin-top:-30px;
+	text-indent:-9999px;
+	z-index:9999;
+}
+.pageBox{
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
+}
+/*page1 start*/
+
+.page1{
+	width:100%;
+	/*height:667px;*/
+	position:relative;
+	background:url(../images/bg_index.jpg) no-repeat;
+	background-size: cover;
+}
+.intro{
+	width:500px;
+	position:absolute;
+	left:55%;
+	margin-left:-250px;
+	top:15px;
+}
+.intro span{
+	opacity:0;
+	font-size:40px;
+	font-weight: bold;
+	color:#fff;
+}
+
+.page1 .nav{
+	width:1200px;
+	height:200px;
+	position:absolute;
+	left:50%;
+	margin-left:-600px;
+	top:70%;
+}
+.nav .home i{
+	background:url(../images/home.png);
+}
+.nav .demo i{
+	background:url(../images/demo.png)
+}
+.nav .about_me i{
+	background:url(../images/about_me.png)
+}
+.nav .contact i{
+	background:url(../images/contact.png)
+}
+.nav div{
+	float:left;
+	margin-right:150px;
+	width:150px;
+	height:150px;
+	text-align: center;
+}
+.nav i{
+	display:inline-block;
+	width:100px;
+	height:100px;
+	transform:rotate(0deg) scale(1);
+	transition:.3s all ease-out;
+}
+
+.nav i:hover {
+	transform:rotate(360deg) scale(1.4);
+}
+.nav a{
+	text-decoration: none;
+	display: inline-block;
+	width:150px;
+	height:30px;
+	background:#999;
+	text-align:center;
+	line-height: 30px;
+	margin-top:20px;
+	opacity: 0.8;
+	font-size: 25px;
+	font-weight:bold;
+	color:blue;
+	border:2px solid #ccc;
+	position:relative;
+}
+.nav a:hover{
+	background:#f69;
+	opacity:.7;	
+	color:red;
+}
+
+.nav a span{
+	position:absolute;
+	background:red;
+	opacity:0;
+	transition: all .4s ease;
+}
+.nav a span.line_left{
+	width:154px;
+	height:2px;
+	left:-154px;
+	top:-2px;
+}
+
+.nav a:hover span.line_left{
+	left:-2px;
+	opacity:1;
+    background:yellow;
+}
+.nav a span.line_top{
+	width:2px;
+	height:34px;
+	right:-2px;
+	top:-34px;
+}
+.nav a:hover span.line_top{
+	top:-2px;
+	opacity:1;
+	background:yellow;
+}
+.nav a span.line_right{
+	width:154px;
+	height:2px;
+	right:-154px;
+	bottom:-2px;
+}
+.nav a:hover span.line_right{
+	right:-2px;
+	opacity:1;
+	background:yellow;
+}
+.nav a span.line_bottom{
+	width:2px;
+	height:34px;
+	left:-2px;
+	bottom:-34px;
+}
+.nav a:hover span.line_bottom{
+	bottom:-2px;
+	opacity:1;
+	background:yellow;
+}
+
+/*page1 end*/
+
+/*page2 start*/
+.page2{
+	width:100%;
+	/*height:667px;*/
+	position:relative;
+}
+.page2 .nav{
+	width:100%;
+	height:10%;
+	background:#00b38a;
+	position:absolute;
+	left:0;
+	top:0;
+}
+.page2 .nav ul{
+	width:90%;
+	height:100%;
+	margin:0 auto;
+	position:relative;
+}
+.page2 .nav ul li{
+	float:left;
+	width:30%;
+	height:100%;
+	position:relative;
+	z-index:2;
+	text-align: center;
+	line-height: 60px;
+	font-weight: bold;
+	font-size:24px;
+	color:#fff;
+	cursor: pointer;
+}
+.page2 .nav ul li.active{
+	position:absolute;
+	left:0;
+	top:0;
+	border-radius:15px 15px 0 0;
+	background:#f95e78;
+	z-index:1;
+}
+/*page2 nav end*/
+
+/*page2 css start*/
+
+.page2 .content{
+	position:absolute;
+	top:10%;
+	left:0;
+	width:100%;
+	height:90%;
+}
+.page2 .content div{
+	display: none;
+}
+.page2 .content .css{
+	width:100%;
+	height:100%;
+}
+.page2 .content .css ul{
+	width:50%;
+	margin:10% auto;
+}
+.page2 .content .css ul li{
+	float:left;
+	width:150px;
+	height:150px;
+	background:#00b38a;
+	margin:25px;
+	border-radius: 20px;
+	position:relative;
+	padding:5px;
+	overflow: hidden;
+}
+.page2 .content .css ul li a{
+	display:block;
+	width:100%;
+	height:100%;
+	overflow: hidden;
+	border-radius:20px;
+}
+.page2 .content .css ul li a img{
+	width:100%;
+	height:100%;
+}
+.page2 .content .css ul li a span{
+	position:absolute;
+	/*left:0;
+	top:0;*/
+	width:100%;
+	height:100%;
+	line-height:150px;
+	text-align: center;
+	background:rgba(19, 220, 177, .7);
+	border-radius:20px;
+	color:#fff;
+	font-size:24px;
+	font-weight: bold;
+}
+
+/*page2 css end*/
+
+/*page2 js start*/
+.page2 .content .js{
+	width:100%;
+	height:100%;
+}
+.page2 .content .js ul{
+	width:55%;
+	margin:3% auto;
+	height:100%;
+}
+.page2 .content .js ul li{
+	float:left;
+	width:150px;
+	height:150px;
+	background:#00b38a;
+	margin:10px;
+	border-radius: 20px;
+	position:relative;
+	padding:5px;
+	overflow: hidden;
+}
+.page2 .content .js ul li a{
+	display:block;
+	width:100%;
+	height:100%;
+	overflow: hidden;
+	border-radius:20px;
+}
+.page2 .content .js ul li a img{
+	width:100%;
+	height:100%;
+}
+.page2 .content .js ul li a span{
+	position:absolute;
+	/*left:0;
+	top:0;*/
+	width:100%;
+	height:100%;
+	line-height:150px;
+	text-align: center;
+	background:rgba(19, 220, 177, .7);
+	border-radius:20px;
+	color:#fff;
+	font-size:24px;
+	font-weight: bold;
+}
+/*page2 js end*/
+
+/*page2 ajax start*/
+.page2 .content .ajax{
+	width:100%;
+	height:100%;
+}
+.page2 .content .ajax ul{
+	width:55%;
+	margin:10% auto;
+	height:100%;
+}
+.page2 .content .ajax ul li{
+	float:left;
+	width:150px;
+	height:150px;
+	background:#00b38a;
+	margin:10px;
+	border-radius: 20px;
+	position:relative;
+	padding:5px;
+	overflow: hidden;
+}
+.page2 .content .ajax ul li a{
+	display:block;
+	width:100%;
+	height:100%;
+	overflow: hidden;
+	border-radius:20px;
+}
+.page2 .content .ajax ul li a img{
+	width:100%;
+	height:100%;
+}
+.page2 .content .ajax ul li a span{
+	position:absolute;
+	/*left:0;
+	top:0;*/
+	width:100%;
+	height:100%;
+	line-height:150px;
+	text-align: center;
+	background:rgba(19, 220, 177, .7);
+	border-radius:20px;
+	color:#fff;
+	font-size:24px;
+	font-weight: bold;
+}
+/*page2 end*/
+
+/*page3 start*/
+.page3{
+	width:100%;
+	background:#e4f4f3;
+}
+.sideBar{
+	width:6%;
+	background:pink;
+	height:100%;
+	float:left;
+	position:relative;
+}
+.sideBar a{
+	width:60px;
+	height:60px;
+	position:absolute;
+	left:50%;
+	margin-left:-30px;
+	top:30%;
+	background:url(../images/home_small.png) no-repeat;
+}
+.page3 .content{
+	float:left;
+	width:94%;
+	height:100%;
+}
+.page3 .content .textBox{
+	float:left;
+	width:60%;
+	height:100%;
+	padding-top:40px;
+	margin-left:5%;
+}
+.page3 .content .textBox p{
+	font-size:50px;
+	color:#01a093;
+	text-indent: 40px;
+}
+.page3 .content .textBox .dec{
+	margin:10px 0;
+	line-height:30px;
+	text-indent:2em;
+	width:90%;
+}
+.page3 .content .textBox .dec span{
+	color:#757575;
+	font-size:20px;
+}
+.page3 .content .textBox .skill{
+	margin-top:8%;
+	width:100%;
+	height:400px;
+}
+.page3 .content .textBox .skill ul{}
+.page3 .content .textBox .skill ul li{
+	width: 230px;
+    height: 200px;
+    float: left;
+    position: relative;
+}
+.page3 .content .textBox .skill ul li span{
+	width: 150px;
+    height: 150px;
+    background:#14b6bb;
+    border-radius: 50%;
+    position:absolute;
+    left:0;
+    top:0;
+}
+.page3 .content .textBox .skill ul li span img{
+	width: 100%;
+	height:100%;
+}
+
+.page3 .content .imgBox{
+	float:left;
+	width:34%;
+	height:100%;
+	margin-top:10%;
+	text-align: center;
+	position:relative;
+}
+.page3 .content .imgBox .photo{
+	width:340px;
+	height:390px;
+	margin:0 auto;
+}
+.page3 .content .imgBox .photo img{
+	width:200px;
+}
+.page3 .content .imgBox p{
+	background: url(../images/icon_bj.png) no-repeat center;
+    width: 52px;
+    height: 60px;
+    position: absolute;
+}
+.page3 .content .imgBox p.phone{
+	left:75px;
+	top:335px;
+}
+.page3 .content .imgBox p.qq{
+	left:160px;
+	top:375px;
+}
+.page3 .content .imgBox p.email{
+	left:250px;
+	top:375px;
+}
+.page3 .content .imgBox p.msg{
+	left:320px;
+	top:335px;
+}
+.page3 .content .imgBox p a{
+	width: 25px;
+    height: 25px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -12px;
+    margin-top: -12px;
+
+}
+.page3 .content .imgBox p.phone a{
+	background:url(../images/phone.png) no-repeat;
+}
+.page3 .content .imgBox p.qq a{
+	background:url(../images/qq.png) no-repeat;
+}
+.page3 .content .imgBox p.email a{
+	background:url(../images/email.png) no-repeat;
+}
+.page3 .content .imgBox p.msg a{
+	background:url(../images/msg.png) no-repeat;
+}
+.page3 .content .imgBox p span{
+	width: 150px;
+    height: 30px;
+    border-radius: 6px;
+    background: #01bca7;
+    position: absolute;
+    text-align: center;
+    line-height: 30px;
+    color: #FFF;
+    top: -40px;
+    left: -52px;
+    font-family: Arial;
+    display: none;
+    z-index: 9999;
+}
+.page3 .content .imgBox p:hover span{
+	display: block;
+}
+.page3 .content .imgBox p span i{
+	width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-top: 8px solid #01bca7;
+    position: absolute;
+    bottom: -18px;
+    left: 50%;
+    margin-left: -8px;
+}
+.page3 .content .imgBox p.email span{
+	width:220px;
+}
+.page3 .content .imgBox p.email span i{
+	margin-left:-42px;
+}
+/*page3 end*/
+
+/*page4 start*/
+.page4{
+	width:100%;
+	background:#e4f4f3;
+}
+.page4 .content{
+	float:left;
+	width:94%;
+	height:100%;
+}
+.page4 .content h2{
+	width: 243px;
+    height: 63px;
+    margin-left: 100px;
+    margin-top: 100px;
+    background:url(../images/contact_text.png) no-repeat;
+}
+.page4 .content p{
+	margin-top: 30px;
+    padding-left: 120px;
+    font-size: 20px;
+    width: 800px;
+    text-indent: 2em;
+    line-height: 36px;
+    font-family: "宋体";
+}
+.page4 .content .contactBox{
+	width: 1000px;
+    height: 360px;
+    margin: 0 auto;
+    position: relative;
+    left: 0;
+    top: 0;
+}
+.page4 .content .contactBox .head{
+	width: 200px;
+    height: 200px;
+    background: url(../images/head.png) no-repeat center;
+    background-size:100% 100%;
+
+    position: absolute;
+    left: 10%;
+    top: 50%;
+    border-radius: 50%;
+    margin: -100px 0 0 -100px;
+}
+.page4 .content .contactBox .text{
+	width: 600px;
+    height: 180px;
+    position: absolute;
+    left: 25%;
+    top: 23%;
+}
+.page4 .content .contactBox .text p{
+	font-size: 20px;
+    line-height: 20px;
+    padding-left: 30px;
+    font-family:"宋体";
+    font-weight: bold;
+}
+.page4 .content .contactBox .text .ewm{
+	width: 200px;
+    height: 200px;
+    position: absolute;
+    right: 20px;
+    top: 0;
+}
+.page4 .content .contactBox .text .ewm img{
+	width:100%;
+	height:100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

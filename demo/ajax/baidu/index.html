@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style>
+*{margin:0;padding:0;list-style:none;}
+body{font-family:'Microsoft Yahei';}
+#div1{width:700px;margin-left:350px;margin-top:200px;}
+#txt{width:550px;height:32px;font-size:20px;text-indent:5px;}
+#btn{width:100px;height:36px;background:#3385ff;outline:none;vertical-align:top;border:none;color:#fff;}
+#div1 ul{border:1px solid #ccc;display:none;width:400px;text-indent:5px;}
+#div1 ul li{height:30px;line-height:30px;font-size:16px;}
+#div1 ul li a{display:block;height:30px;text-decoration:none;color:#000;}
+#div1 ul li:hover a{background:#999;cursor:default;}
+#img1{position:absolute;left:570px;top:100px;}
+#img2{position:absolute;right:0;top:20px;}
+#img3{position:absolute;left:450px;bottom:50px;}
+</style>
+<script>
+	function bbb(json){
+		//alert(json.s)
+		//console.log(json.s);
+		var oUl=document.getElementById('ul1');
+		var oUlInnerHTML='';
+		if(json.s.length==0){
+			oUl.style.display='none';
+		}else{
+			oUl.innerHTML='';
+			for(var i=0;i<json.s.length;i++){
+				//https://www.baidu.com/s?wd=爱奇艺
+				oUlInnerHTML+='<li><a href="https://www.baidu.com/s?wd='+json.s[i]+'">'+json.s[i]+'</a></li>';
+			}
+			oUl.innerHTML=oUlInnerHTML;
+			oUl.style.display='block';
+		}
+	}
+</script>
+<script>
+window.onload=function(){
+	
+	var oTxt=document.getElementById('txt');
+	var oS=document.getElementById('s');
+	oTxt.onkeyup=function(){
+		//https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=bbb&json=1&p=3&sid=17520_1448_17620_14429_17001_17470_17073_15912_11807_17051&bs=aaa&csor=0&cb=jQuery1102011049261572770774_1445483309971&_=1445483309978
+		//oS.src='https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd='+oTxt.value+'&cb=bbb';
+		var oScript=document.createElement('script');
+		oScript.src='https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd='+this.value+'&cb=bbb';
+		document.getElementsByTagName('head')[0].appendChild(oScript);
+	};
+};
+</script>
+</head>
+<body>
+<img src="images/baidu_logo.png" id="img1">
+<img src="images/baidu_login.png" id="img2">
+<img src="images/baidu_footer.png" id="img3">
+<div id="div1">
+	<input type="text" id="txt"><input type="button" value="百度一下" id="btn">
+	<ul id="ul1">
+		<li>aaa</li>
+		<li>aaa</li>
+		<li>aaa</li>
+	</ul>
+</div>
+</body>
+</html>

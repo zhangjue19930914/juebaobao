@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>sfq</title>
+<style>
+* {margin:0; padding:0; list-style:none;}
+body{background:#e4f4f3;}
+#div1 {width:940px; height:305px; border:1px solid black; margin:10px auto; position:relative; overflow:hidden;}
+#div1 span {width:20px; height:305px; display:block; position:absolute; left:0; top:0;}
+#div1 div {width:840px; height:305; position:absolute; left:0; top:0; background:#CCC;}
+</style>
+<script src="move.js"></script>
+<script>
+window.onload=function(){
+	var oDiv=document.getElementById('div1');
+	var aDiv=oDiv.children;
+	//计算每个div的定位left值
+	for(var i=0;i<aDiv.length;i++){
+		aDiv[i].style.left=i*aDiv[i].children[1].offsetWidth+'px';
+	}
+
+	//添加事件
+	for(var i=0;i<aDiv.length;i++){
+		aDiv[i].index=i;
+		aDiv[i].onmouseover=function(){
+			for(var i=0;i<aDiv.length;i++){
+				if(i<=this.index){
+					move(aDiv[i],{left:i*20},{time:1000,type:'ease-out'})
+				}else{
+					move(aDiv[i],{left:aDiv[0].offsetWidth+(i-1)*20},{time:1000,type:'ease-out'})
+				}
+			}
+		};
+	}
+};
+</script>
+</head>
+
+<body>
+<div id="div1">
+	<div class="active"><img src="images/0.jpg" /><span style="background:#C00;">第一项</span></div>
+	<div><img src="images/1.jpg" /><span style="background:#0fc;">第二项</span></div>
+	<div><img src="images/2.jpg" /><span style="background:#af0;">第三项</span></div>
+	<div><img src="images/3.jpg" /><span style="background:#c0f;">第四项</span></div>
+	<div><img src="images/0.jpg" /><span style="background:#e0f;">第五项</span></div>
+	<div><img src="images/1.jpg" /><span style="background:#a90;">第六项</span></div>
+</div>
+</body>
+</html>

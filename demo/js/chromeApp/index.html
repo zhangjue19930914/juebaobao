@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style>
+body{background:#e4f4f3;}
+p{text-align:center;font-size:30px;color:#f69;}
+*{margin:0;padding:0;list-style:none;}
+#ul1{width:800px;margin:20px auto;}
+#ul1 li{width:128px;height:128px;border:10px solid #000;float:left;background:#fff;margin:20px;}
+</style>
+<script src="move.js"></script>
+<script>
+window.onload=function(){
+	var oUl=document.getElementById('ul1');
+	var aLi=oUl.children;
+	var zIndex=1;
+
+	//1.布局转换
+	var aPos=[]; //记录所有图片起始的位置，也起始是记录了每个的所在的房子的位置(房子就代表位置)
+	for(var i=0;i<aLi.length;i++){
+		aPos.push({left:aLi[i].offsetLeft,top:aLi[i].offsetTop})
+		aLi[i].style.left=aPos[i].left+'px';
+		aLi[i].style.top=aPos[i].top+'px';
+	}
+	for(var i=0;i<aLi.length;i++){
+		aLi[i].style.position='absolute';
+		aLi[i].style.margin=0;
+		aLi[i].index=i;
+	}
+
+	//2.封装一个拖拽
+	function drag(obj){
+		obj.onmousedown=function(ev){
+			var oEvt=ev||event;
+			var disX=oEvt.clientX-obj.offsetLeft;
+			console.log(disX)
+			var disY=oEvt.clientY-obj.offsetTop;
+			obj.style.zIndex=zIndex++;
+			clearInterval(obj.timer);  //清除move.js里obj身上的定时器,不然会抖动
+			document.onmousemove=function(ev){
+				var oEvt=ev||event;
+				var l=oEvt.clientX-disX;
+				var t=oEvt.clientY-disY;
+
+				//限定
+				if(l<0) l=0;//document.documentElement.clientWidth 可视区域的宽
+				if(l>document.documentElement.clientWidth-obj.offsetWidth) l=document.documentElement.clientWidth-obj.offsetWidth; 
+				if(t<0) t=0; //document.documentElement.clientHeight 可视区域的高
+				if(t>document.documentElement.clientHeight-obj.offsetHeight) t=document.documentElement.clientHeight-obj.offsetHeight;
+
+				//使用
+				obj.style.left=+l+'px';
+				obj.style.top=t+'px';
+
+				//碰撞检测
+				for(var i=0;i<aLi.length;i++){
+					aLi[i].style.borderColor='black';
+				}
+				var nearObj=findNearest(obj);
+				if(nearObj && nearObj!=obj){
+					//7.队列交换位置
+					var n=obj.index;  //被拖拽的元素的索引
+					var m=nearObj.index;  //被撞到的元素的索引
+					if(n<m){
+						//n-m之间的元素的索引值--；然后n到m位置上去
+						for(var i=0;i<aLi.length;i++){
+							if(aLi[i].index>n && aLi[i].index<=m){
+								aLi[i].index--;
+								move(aLi[i],aPos[aLi[i].index])
+							}
+						}
+						obj.index=m;
+					}else{
+						//n-m之间的元素的索引值++；然后n到m的位置上去
+						for(var i=0;i<aLi.length;i++){
+							if(aLi[i].index>=m && aLi[i].index<n){
+								aLi[i].index++;
+								move(aLi[i],aPos[aLi[i].index])
+							}
+						}
+						obj.index=m;
+					}
+				}
+			
+			};
+			document.onmouseup=function(){
+				document.onmouseup=document.onmousemove=null;
+				obj.releaseCapture && obj.releaseCapture();
+
+				//回自己位置
+				move(obj,aPos[obj.index])
+			};
+			obj.setCapture && obj.setCapture(); //ie
+			return false; //ff chrome 下的图片拖拽默认事件
+		};
+	}
+
+	//3 集体拖拽
+	for(var i=0;i<aLi.length;i++){
+		drag(aLi[i]);
+	}
+
+	//4 封装碰撞检测
+	function collTest(obj1,obj2){ //这里的obj2不是指图片对象了，而是图片所在的位置
+		var l1=obj1.offsetLeft;
+		var t1=obj1.offsetTop;
+		var r1=obj1.offsetLeft+obj1.offsetWidth;
+		var b1=obj1.offsetTop+obj1.offsetHeight;
+
+		var l2=aPos[obj2.index].left;                //每个图片所在的位置当成是一个房子，
+		var t2=aPos[obj2.index].top;				//拿被拖拽的元素去和图片所在的位置
+		var r2=aPos[obj2.index].left+obj2.offsetWidth;	//去做碰撞检测
+		var b2=aPos[obj2.index].top+obj2.offsetHeight;
+
+		if(t1>b2 || r1<l2 || b1<t2 || l1>r2){
+			//没撞到
+			return false;
+		}else{
+			//撞到了
+			return true;
+		}
+	}
+
+	//5.封装一个碰撞时最近的元素
+	function findNearest(obj){
+		var minDis=999999;
+		var minDisIndex=-1;
+		for(var i=0;i<aLi.length;i++){
+			//if(obj==aLi[i]) continue; 现在就需要判断自己与自己房子的碰撞，不能跳过
+			if(collTest(obj,aLi[i])){  //第一关判断撞没撞到
+				var dis=getDis(obj,aLi[i]); //取拖拽的元素和被撞到的元素之间最短的元素的距离
+				if(dis<minDis){
+					minDis=dis;
+					minDisIndex=i;
+				}
+			}
+		}
+		if(minDisIndex== -1){
+			return null; //为了保持返回的数据类型一致。
+		}else{
+			return aLi[minDisIndex];
+		}
+	}
+
+	//6.取距离
+	function getDis(obj1,obj2){
+		var a=aPos[obj2.index].left-obj1.offsetLeft;
+		var b=aPos[obj2.index].top-obj1.offsetTop;
+		return Math.sqrt(a*a+b*b);
+	}
+};
+</script>
+</head>
+<body>
+<p>拖拽APP图标预览效果</p>
+<ul id="ul1">
+	<li><img src="img4/1.png"></li>
+	<li><img src="img4/2.png"></li>
+	<li><img src="img4/3.png"></li>
+	<li><img src="img4/4.png"></li>
+	<li><img src="img4/5.png"></li>
+	<li><img src="img4/6.png"></li>
+	<li><img src="img4/7.png"></li>
+	<li><img src="img4/8.png"></li>
+	<li><img src="img4/9.png"></li>
+</ul>
+</body>
+</html>

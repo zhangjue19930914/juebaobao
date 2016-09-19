@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style>
+#div1{width:360px;height:360px;position:relative;border:1px solid red;}
+#mask{position:absolute;left:0;top:0;background:rgba(0,0,0,.3);display:none;width:100px;height:100px;cursor:zoom-in;}
+#div2{position:absolute;left:400px;top:8px;width:360px;height:360px;display:none;border:1px solid red;overflow: hidden;}
+#img{position:absolute;left:0;top:0;}
+</style>
+<script>
+window.onload=function(){
+	var oDiv1=document.getElementById('div1');
+	var oMask=document.getElementById('mask');
+	var oDiv2=document.getElementById('div2');
+	var oImg=document.getElementById('img');
+	oDiv1.onmousemove=function(ev){
+		var oEvt=ev||event;
+		var l=oEvt.clientX-oMask.offsetWidth/2;
+		var t=oEvt.clientY-oMask.offsetHeight/2;
+
+		//限定范围
+		if(l<0) l=0;
+		if(t<0) t=0;
+		if(l>oDiv1.offsetWidth-oMask.offsetWidth){
+			l=oDiv1.offsetWidth-oMask.offsetWidth;
+		}
+		if(t>oDiv1.offsetHeight-oMask.offsetHeight){
+			t=oDiv1.offsetHeight-oMask.offsetHeight;
+		}
+
+		oMask.style.left=l+'px';
+		oMask.style.top=t+'px';
+
+		//控制大图
+		//oImg.left=oMask.left/()
+		oImg.style.left=-(oMask.offsetLeft/(oDiv1.offsetWidth-oMask.offsetWidth)*(oImg.offsetWidth-oDiv2.offsetWidth))+'px';
+		oImg.style.top=-(oMask.offsetTop/(oDiv1.offsetHeight-oMask.offsetHeight)*(oImg.offsetHeight-oDiv2.offsetHeight))+'px';
+	};
+
+	oDiv1.onmouseover=function(ev){
+		var oEvt=ev||event;
+		var fromObj=oEvt.fromElement||oEvt.relatedTarget;
+		if(fromObj && oDiv1.contains(fromObj)){
+			return;
+		}
+		oMask.style.display=oDiv2.style.display='block';
+	};
+
+	oDiv1.onmouseout=function(ev){
+		var oEvt=ev||event;
+		var toObj=oEvt.toElement||oEvt.relatedTarget;
+		if(toObj && oDiv1.contains(toObj)){
+			return;
+		}
+		oMask.style.display=oDiv2.style.display='none';
+	}
+};
+</script>
+</head>
+<body>
+<div id="div1">
+	<img src="images/small_shoe.jpg" >
+	<div id="mask"></div>
+</div>
+<div id="div2"><img src="images/big_shoe.jpg" id="img"></div>
+</body>
+</html>

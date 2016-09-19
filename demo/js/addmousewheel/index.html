@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style>
+*{margin:0;padding:0;list-style:none;}
+body{font-size:12px;font-family:'Microsoft Yahei';}
+.wrap{width:318px;height:422px;background:#393939;border:1px solid #312929;margin:30px auto;}
+.wrap h3{width:92px;line-height:14px;font-size:14px;color:#a5adad;margin-top:10px;margin-left:12px;font-weight:normal;}
+.wrap .content{width:302px;height:382px;margin:0 4px 7px 12px;overflow:hidden;position:relative;}
+.wrap .content ul{width:294px;position:absolute;left:0;top:0;}
+.wrap .content ul li{width:294px;height:76px;}
+.wrap .content ul li img{float:left;margin-right:12px;margin-top:9px;}
+.wrap .content ul li .des{float:left;width:135px;}
+.wrap .content ul li .des p{width:100%;line-height:18px;font-size:12px;color:#fff;margin-top:12px;}
+.wrap .content ul li .des span{color:#7b7373;}
+.wrap .content .scroll{width:8px;height:382px;background:#42424a;position:absolute;right:0;top:8px;}
+.wrap .content .scroll .bar{width:100%;height:67px;background:#848484;position:absolute;left:0;top:0;}
+</style>
+<script>
+window.onload=function(){
+	var oScroll=document.getElementsByClassName('scroll')[0];
+	var oBar=oScroll.getElementsByClassName('bar')[0];
+	var oUl=document.getElementById('ul1');
+	var oContent=document.getElementsByClassName('content')[0];
+
+	oBar.onmousedown=function(ev){
+		var oEvt=ev||event;
+		var disY=oEvt.clientY-oBar.offsetTop;
+
+		document.onmousemove=function(ev){
+			var oEvt=ev||event;
+			var t=oEvt.clientY-disY;
+			setPos(t);
+		};
+		document.onmouseup=function(){
+			document.onmouseup=document.onmousemove=null;
+			oBar.releaseCapture && oBar.releaseCapture();
+		};
+		oBar.setCapture&&oBar.setCapture();
+		return false;
+	};
+
+	//封装setPos函数
+	function setPos(t){
+		//限定
+		if(t<0) t=0;
+		if(t>oScroll.offsetHeight-oBar.offsetHeight) t=oScroll.offsetHeight-oBar.offsetHeight;
+
+		//使用
+		oBar.style.top=t+'px';
+
+		//计算比例
+		var scale=oBar.offsetTop/(oScroll.offsetHeight-oBar.offsetHeight);
+		oUl.style.top=scale*(oContent.offsetHeight-oUl.offsetHeight)+'px';
+	}
+
+	//addMouseWheel函数
+	addMouseWheel(oContent,function(down){
+		var t=oBar.offsetTop;
+		console.log(t)
+		if(down){
+			t+=20;
+			console.log(t)
+		}else{
+			t-=20;
+			console.log(t)
+		}
+		setPos(t);
+	})
+
+	//addMouseWheel
+	function addMouseWheel(obj,fn){
+		if(navigator.userAgent.toLowerCase().indexOf('firefox')!= -1){
+			//ff
+			obj.addEventListener('DOMMouseScroll', fnWheel, false)
+		}else{
+			//ie chrome
+			obj.onmousewheel=fnWheel;
+		}
+
+		//fnwheel
+		function fnWheel(ev){
+			var oEvt=ev||event;
+			var down=true;
+			if(oEvt.wheelDelta){
+				//ie chrome
+				down=oEvt.wheelDelta<0?true:false;
+			}else{
+				down=oEvt.detail>0?true:false;
+			}
+			fn(down);
+			oEvt.preventDefault && oEvt.preventDefault();
+			return false;
+		}
+	}
+};
+</script>
+</head>
+<body>
+<div class="wrap">
+	<h3>本期看点  (29)</h3>
+	<div class="content">
+		<ul id="ul1">
+			<li>
+				<img src="images/1.jpg">
+				<div class="des">
+					<p>奥利为奶奶跳自创舞蹈 大战扫地机器人</p>
+					<span>播放:240,884</span>
+				</div>
+			</li>
+			<li>
+				<img src="images/2.jpg">
+				<div class="des">
+					<p>奥利为奶奶跳自创舞蹈 大战扫地机器人</p>
+					<span>播放:240,884</span>
+				</div>
+			</li>
+			<li>
+				<img src="images/3.jpg">
+				<div class="des">
+					<p>奥利为奶奶跳自创舞蹈 大战扫地机器人</p>
+					<span>播放:240,884</span>
+				</div>
+			</li>
+			<li>
+				<img src="images/4.jpg">
+				<div class="des">
+					<p>奥利为奶奶跳自创舞蹈 大战扫地机器人</p>
+					<span>播放:240,884</span>
+				</div>
+			</li>
+			<li>
+				<img src="images/1.jpg">
+				<div class="des">
+					<p>奥利为奶奶跳自创舞蹈 大战扫地机器人</p>
+					<span>播放:240,884</span>
+				</div>
+			</li>
+			<li>
+				<img src="images/2.jpg">
+				<div class="des">
+					<p>奥利为奶奶跳自创舞蹈 大战扫地机器人</p>
+					<span>播放:240,884</span>
+				</div>
+			</li>
+			<li>
+				<img src="images/3.jpg">
+				<div class="des">
+					<p>奥利为奶奶跳自创舞蹈 大战扫地机器人</p>
+					<span>播放:240,884</span>
+				</div>
+			</li>
+			<li>
+				<img src="images/4.jpg">
+				<div class="des">
+					<p>奥利为奶奶跳自创舞蹈 大战扫地机器人</p>
+					<span>播放:240,884</span>
+				</div>
+			</li>
+			<li>
+				<img src="images/1.jpg">
+				<div class="des">
+					<p>奥利为奶奶跳自创舞蹈 大战扫地机器人</p>
+					<span>播放:240,884</span>
+				</div>
+			</li>
+			<li>
+				<img src="images/2.jpg">
+				<div class="des">
+					<p>奥利为奶奶跳自创舞蹈 大战扫地机器人</p>
+					<span>播放:240,884</span>
+				</div>
+			</li>
+		</ul>
+		<div class="scroll">
+			<div class="bar"></div>
+		</div>
+	</div>
+</div>	
+</body>
+</html>

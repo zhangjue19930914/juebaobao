@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>3Dhuan</title>
+<style>
+	body{ background:#000;}
+	*{ padding:0; margin:0; list-style:none;}
+	ul{ width:133px; height:200px;  margin:200px auto; position:relative; -webkit-transform-style:preserve-3d; -webkit-transform:perspective(800px) rotateX(-15deg);}
+	li{ height:100%; width:100%; position:absolute; top:0; left:0; background:url(img3/1.jpg); -webkit-transition:1s all ease; box-shadow:0 0 10px #FFF,0 0 20px #FFF,0 0 30px #FFF; -webkit-box-reflect:below 20px -webkit-linear-gradient(rgba(0,0,0,0) 40%,rgba(0,0,0,0.4));border-radius: 10%;}
+</style>
+<script>
+	window.onload=function(){
+		var oUl=document.querySelector('ul');
+		
+		var N=11;
+		for(var i=0; i<N;i++){
+			var oLi=document.createElement('li');
+			oLi.style.backgroundImage='url(img3/'+(i+1)+'.jpg)';
+			oUl.appendChild(oLi);
+			
+			oLi.style.WebkitTransition='0.5s all ease '+200*(N-i)+'ms';
+			
+			//变的比过渡还快 - 让它慢一些执行
+			(function(oLi,i){
+				setTimeout(function(){
+					oLi.style.WebkitTransform='rotateY('+360/N*i+'deg) translateZ(400px)';	
+				},0);	
+			})(oLi,i);
+		}
+		
+		var aLi=oUl.children;
+		var y=0;
+		var x=45;
+		var speedX=0;
+		var speedY=0;
+		var lastX=0;
+		var lastY=0;
+		var timer=null;
+		
+		document.onmousedown=function(ev){
+			
+			clearInterval(timer);
+			var disX=ev.clientX-y;
+			var disY=ev.clientY-x;
+			document.onmousemove=function(ev){
+				y=ev.clientX-disX;
+				x=ev.clientY-disY;
+				change(y/3,x/3);
+				
+				speedX=ev.clientX-lastX;
+				speedY=ev.clientY-lastY;
+				
+				lastX=ev.clientX;
+				lastY=ev.clientY;
+			};
+			document.onmouseup=function(){
+				document.onmouseup=null;
+				document.onmousemove=null;	
+				
+				//alert(speedX);
+				
+				timer=setInterval(function(){
+					speedX*=0.95;
+					speedY*=0.95;
+					y+=speedX;
+					x+=speedY;
+					
+					change(y/3,x/3);	
+					
+					if(Math.abs(speedX)<=1){
+						clearInterval(timer);
+						//alert('停止了');
+					}
+					
+				},30);
+			
+			};
+			return false;
+		};
+		
+		
+		function change(y,x){
+			for(var i=0; i<aLi.length;i++){
+				aLi[i].style.WebkitTransition='none';
+				aLi[i].style.WebkitTransform='rotateY('+(360/N*i+y)+'deg) translateZ(400px)';
+				
+				oUl.style.WebkitTransform='perspective(800px) rotateX('+-x+'deg)';
+				
+				var scale=Math.abs(Math.abs((360/N*i+y)%360)-180)/180;
+				
+				
+				scale<0.4&&(scale=0.4);
+				
+				aLi[i].style.opacity=scale;
+			}	
+		}
+		
+	};
+</script>
+</head>
+
+<body>
+	<ul></ul>
+</body>
+</html>
