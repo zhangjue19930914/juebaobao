@@ -1,2567 +1,2065 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html>
+<head lang="en">
     <meta charset="UTF-8">
-    <title>美团首页</title>
-    <link href="css/iconfont.css" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        body {
-            font: 12px 'Hiragino Sans GB', 'WenQuanYi Micro Hei', tahoma, sans-serif;;
-        }
-
-
-        .header_wrapper {
-            width: 100%;
-            border-bottom: 1px solid #dddddd;
-        }
-
-        .header {
-            width: 1170px;
-            height: 31px;
-            margin: 0 auto;
-        }
-
-        .fl {
-            float: left;
-        }
-
-        .fr {
-            float: right;
-        }
-
-        .clearfix:after {
-            content: "";
-            clear: both;
-            display: block;
-        }
-
-        .header  a {
-            position: relative;
-            height: 12px;
-            line-height: 12px;
-            color: #666;
-            padding: 10px 0  8px;
-            margin-right: 10px;
-        }
-
-        .header .login .favorite {
-            margin-right: 18px;
-        }
-        .header .login .register {
-            padding-right: 11px;
-        }
-
-        .header .login .vertical-bar {
-            position:absolute;
-            right: 0;
-            top: 8px;
-            width: 1px;
-            height: 14px;
-            background: #dddddd;
-        }
-
-
-
-        .header .login .entry {
-            color: #f76120;
-            margin-right: 14px;
-        }
-
-        .header .login .phone {
-            padding-left: 21px;
-        }
-        .header .login .phone i.F-glob-phone {
-            position:absolute;
-            left: 7px;
-            top: 10px;
-        }
-
-        .header .login .phone i.tri_down {
-            position:absolute;
-            right: -13px;
-            top: 15px;
-            width: 0;
-            height: 0;
-            border: 3px solid transparent;
-            border-top-color: #999999;
-        }
-
-        .header .my-info a {
-            padding-left: 12px;
-            padding-right: 22px;
-            margin-right: 0;
-        }
-
-        .header .my-info a.my-order {
-            padding-left: 8px;
-            padding-right: 9px;
-        }
-
-        .header .my-info a.more i.tri_down {
-            position:absolute;
-            right: 8px;
-            top: 15px;
-            width: 0;
-            height: 0;
-            border: 3px solid transparent;
-            border-top-color: #999999;
-        }
-
-        .header .my-info a i.tri_down {
-            position:absolute;
-            right: 9px;
-            top: 15px;
-            width: 0;
-            height: 0;
-            border: 3px solid transparent;
-            border-top-color: #999999;
-        }
-
-        .header .my-info  .vertical-bar {
-            position:absolute;
-            right: 0;
-            top: 10px;
-            width: 1px;
-            height: 12px;
-            background: #dddddd;
-        }
-
-        .header .my-info .cart {
-            padding-left: 34px;
-        }
-
-        .header .my-info .cart .F-glob-cart {
-            position:absolute;
-            left: 12px;
-            top: 10px;
-        }
-
-        .header .my-info .more {
-            padding-right: 21px;
-        }
-
-        .header .my-info .cart span {
-            color: #f76120;
-            margin: 0.1em;
-        }
-        .content_wrapper {
-            width: 1170px;
-            margin: 0 auto;
-        }
-
-        .banner {
-            width: 100%;
-            height: 60px;
-            margin: 0 auto;
-        }
-
-        .banner a {
-            position: relative;
-            display: block;
-            height: 60px;
-            width: 100%;
-            text-align: center;
-            background: #cff2f8;
-        }
-
-        .banner a img {
-
-        }
-        
-        .banner a i.close_btn {
-            position: absolute;
-            right: 9px;
-            top: 8px;
-            width: 11px;
-            height: 11px;
-            background: url("images/close_btn.png") no-repeat;
-        }
-
-        .banner a  span {
-            position:absolute;
-            right: 4px;
-            top: 44px;
-            width: 31px;
-            height: 13px;
-            background: #68797c;
-            border-radius: 6px;
-        }
-
-        .banner a span i.gray {
-            position:absolute;
-            left: 6px;
-            top: 3px;
-            width: 7px;
-            height: 7px;
-            background: #cccccc;
-            border-radius: 3px;
-        }
-
-        .banner a span i.green {
-            position:absolute;
-            left: 18px;
-            top: 3px;
-            width: 7px;
-            height: 7px;
-            background: #2bb8aa;
-            border-radius: 3px;
-        }
-
-        .search {
-            width: 100%;
-            height: 105px;
-            margin: 0 auto;
-        }
-
-        .search .logo {
-            width: 82px;
-            height: 54px;
-            margin-top: 21px;
-            background: url("images/logo.png") no-repeat 0 -896px;
-        }
-
-        .search .city h3 {
-            font-size: 18px;
-            height: 27px;
-        }
-
-        .search .city .switch {
-            /*display: block;*/
-            /*line-height: 18px;*/
-            border: 1px solid #eeeeee;
-            color: #999;
-            background: #fff;
-            padding: 2px 5px;
-            font-size: 12px;
-            line-height: 20px;
-        }
-
-        .search .city div {
-            width: 123px;
-            margin: 24px 0 0 10px;
-        }
-
-        .search .search_box {
-            width: 490px;
-            height: 72px;
-            margin: 21px 0 0 120px;
-        }
-
-        .search .search_box .border {
-            width: 421px;
-            height: 38px;
-            border: 2px solid #2db8ad;
-
-        }
-
-        .search .search_box .search_bar a{
-            position: relative;
-            width: 28px;
-            height: 32px;
-            line-height: 32px;
-            padding: 3px 20px 3px 14px;
-            font-size: 14px;
-            color: #666;
-            border-right: 1px solid #ccc;
-
-        }
-
-        .search .search_box .search_bar a i.tri_down {
-            position:absolute;
-            right: 7px;
-            top: 17px;
-            width: 0;
-            height: 0;
-            border: 3px solid transparent;
-            border-top-color: #666;
-        }
-
-        .search_box .border input {
-            width: 348px;
-            height: 26px;
-            padding: 6px 5px;
-            border: none;
-            outline: none;
-            color: #999;
-            font-size: 14px;
-        }
-
-        .search_box .search_bar .go {
-            width: 65px;
-            height: 42px;
-            line-height: 42px;
-            background: #2bb8aa;
-            color: #fff;
-            font-size: 14px;
-            border: none;
-            text-align: center;
-        }
-
-        .search_box .rec a {
-            height: 18px;
-            padding-right: 20px;
-            color: #666;
-            text-align: center;
-            margin-top: 8px;
-        }
-
-        .search_box .rec a:hover {
-            color: #2bb8aa;
-            text-decoration: underline;
-        }
-
-        .search .refund {
-            width: 192px;
-            height: 42px;
-            margin-top: 29px;
-            /*border: 1px solid red;*/
-        }
-
-        .search .refund a {
-            height: 42px;
-            margin-left: 20px;
-            color: #999;
-        }
-
-        .search .refund a i {
-            display: block;
-            width: 36px;
-            height: 24px;
-            line-height: 1;
-            font-size: 24px;
-            text-align: center;
-            margin: 0 auto;
-            zoom: 1;
-        }
-
-        .all_kinds {
-            width: 245px;
-            height: 517px;
-            /*border: 1px solid #ccc;*/
-            border-top: none;
-        }
-
-        .top_nav {
-            width: 100%;
-            height: 40px;
-        }
-
-        .top_nav .all_kinds .green_bg{
-            width: 231px;
-            height: 40px;
-            line-height: 40px;
-            padding-left: 15px;
-            color: #fff;
-            font-size: 16px;
-            background: url("images/logo.png") no-repeat 0 -31px;
-        }
-
-        .top_nav_item {
-            width: 924px;
-            height: 40px;
-            background: #2bb8aa;
-        }
-
-        .top_nav_item a {
-            height: 40px;
-            line-height: 40px;
-            font-size: 16px;
-            color: #fff;
-            font-weight: bold;
-            padding: 0 18px;
-        }
-
-        .top_nav_item a:hover {
-            background: #00c3b0;
-        }
-
-        .top_nav .all_kinds .sidebar {
-            position:absolute;
-            left: 0;
-            top: 40px;
-            width: 245px;
-            height: 477px;
-            border: 1px solid #eee;
-            border-top: none;
-        }
-
-        .top_nav .all_kinds {
-            position: relative;
-        }
-
-        .sidebar dl {
-            position: relative;
-            width: 203px;
-            height: 43px;
-            padding: 5px 16px 4px 5px;
-            margin: 0 10px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .sidebar dl i {
-            position:absolute;
-            right: 2px;
-            top: 20px;
-            color: #e0e0e0;
-        }
-
-        .sidebar dl.last {
-            border-bottom: none;
-        }
-
-        .sidebar dl dt a {
-            width: 95px;
-            height: 43px;
-            line-height: 43px;
-            color: #444;
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        .sidebar dl dd a {
-            height: 42px;
-            line-height: 42px;
-            color: #999;
-            margin-right: 6px;
-        }
-
-        .middle_content {
-            width: 906px;
-            height: 478px;
-            margin: 0 0 30px 264px;
-        }
-
-        .middle_content .nav_img {
-            width: 689px;
-            height: 477px;
-            border-bottom: 1px solid #eee;
-            margin: 0 18px 14px 0;
-        }
-
-        .nav_img {
-            width: 689px;
-            margin-right: 18px;
-        }
-
-        .nav_img dl {
-            width: 100%;
-            height: 24px;
-            padding: 14px 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .nav_img dl dt {
-            position: relative;
-            width: 48px;
-            height: 24px;
-            line-height: 18px;
-            margin-right: 20px;
-            padding-left: 20px;
-            color: #999;
-
-        }
-
-        .nav_img dl dt i {
-            position:absolute;
-            left: 0;
-            top: 0;
-            font-size: 16px;
-        }
-
-        .nav_img dl dd {
-
-        }
-
-        .nav_img dl dd a{
-            height: 24px;
-            line-height: 24px;
-            margin-right: 20px;
-            color: #666;
-        }
-
-        .nav_img dl dd a.orange {
-            color: #f76120;
-        }
-
-        .nav_img .more {
-            line-height: 20px;
-            color: #666;
-            margin: 1px 0;
-            border: 1px solid #eee;
-            padding: 0 13px 0 5px;
-        }
-
-
-
-        .hot_img_left {
-            width: 333px;
-            padding:  10px 11px 0 0px;
-            border-right: 1px solid #eee;
-        }
-
-        .hot_img_right {
-            width: 333px;
-            padding:  10px 0 0 11px;
-            border-right: none;
-        }
-
-        .nav_img .hot_img a {
-            position: relative;
-            display: block;
-        }
-
-        .nav_img .hot_img a .discount{
-            position:absolute;
-            right: 20px;
-            top: 0;
-            width: 28px;
-            height: 37px;
-            line-height: 37px;
-            padding: 16px 22px 0 12px;
-            background: url("images/logo.png") no-repeat 0 -830px;
-            color: #fff;
-            font-weight: bold;
-            font: 18px arial,sans-serif;;
-        }
-
-        .hot_img {
-            width: 689px;
-            height: 317px;
-        }
-
-        .hot_img .desc .title {
-            width: 214px;
-            height: 43px;
-            padding-right: 10px;
-            border-right: 1px solid #eee;
-            margin: 15px 0 10px;
-        }
-
-        .hot_img .desc .title h3 a {
-            height: 21px;
-            font-size: 14px;
-            color: #666;
-            font-weight: bold;
-        }
-
-        .hot_img .desc .title h3 a:hover {
-            text-decoration: underline;
-        }
-
-        .hot_img .desc .title p {
-            height: 18px;
-            width: 214px;
-            color: #999;
-            margin-top: 4px;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            overflow: hidden;
-        }
-
-        .hot_img .desc .price {
-            height: 70px;
-            line-height: 70px;
-            font-size: 30px;
-            color: #f76120;
-            font-family: arial,sans-serif;
-        }
-
-        .qrcode {
-            border-right: 1px solid #eee;
-            border-left: 1px solid #eee;
-        }
-
-
-        .middle_content .super_tuesday {
-            width: 197px;
-            height: 318px;
-            border: 1px solid #eeeeee;
-        }
-
-        .super_tuesday h2 {
-            margin-top: 51px;
-            height: 36px;
-            line-height: 36px;
-            font-size: 24px;
-            text-align: center;
-            color: #333;
-        }
-
-        .super_tuesday p {
-            height: 21px;
-            line-height: 21px;
-            text-align: center;
-            color: #999;
-            font-size: 14px;
-
-        }
-
-        .super_tuesday img {
-            margin: 5px 0 0 10px;
-        }
-
-        .famous_shop {
-            width: 100%;
-            height: 310px;
-            margin-bottom: 30px;
-        }
-
-        .famous_shop .shop {
-            width: 953px;
-            height: 100%;
-        }
-
-        .shop .title {
-            height: 48px;
-        }
-
-        .shop .title h3 {
-            width: 120px;
-            height: 40px;
-            line-height: 40px;
-            font-size: 20px;
-            color: #666;
-        }
-
-        .shop .title h3 span {
-            width: 37px;
-            height: 40px;
-            background: url("images/famous_shop.png") no-repeat 0 -321px;
-        }
-
-        .famous_shop .item_list {
-            width: 951px;
-            height: 260px;
-            border: 1px solid #eeeeee;
-        }
-
-        .famous_shop .item {
-            width: 237px;
-            height: 260px;
-            border-right: 1px solid #eee;
-        }
-        .famous_shop .item_list .item img {
-            padding: 15px 16px 0;
-        }
-
-        .famous_shop .item .image {
-            display: block;
-        }
-
-        .famous_shop .item h3 {
-            width: 205px;
-            height: 18px;
-            margin-top: 18px;
-            padding: 0 16px;
-
-        }
-
-        .famous_shop .item h3 a {
-            display: block;
-            width: 205px;
-            height: 18px;
-            line-height: 18px;
-            color: #666;
-            font-size: 14px;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            overflow: hidden;
-        }
-
-        .famous_shop .item .number {
-            width: 205px;
-            height: 17px;
-            padding: 0 16px;
-            margin: 10px 0 12px;
-        }
-
-        .famous_shop .item .price {
-            font-size: 16px;
-            color: #f76120;
-            font-family: arial,sans-serif;
-
-        }
-
-        .famous_shop .item .quantity {
-            margin-top: 2px;
-            font-size: 12px;
-            color: #999;
-            font-family: arial,sans-serif;
-
-        }
-
-        .famous_shop .item .discount {
-            width: 205px;
-            height: 45px;
-            margin: 0 16px;
-            border-top: 1px solid #eeeeee;
-        }
-
-        .famous_shop .item .discount span {
-            padding: 1px 5px;
-            background: #f76120;
-            color: #fff;
-            font-size: 12px;
-            line-height: 40px;
-        }
-
-        .famous_shop .item.last {
-            border-right: none;
-        }
-
-        .famous_shop .dream {
-            width: 198px;
-            height: 310px;
-        }
-        
-        .famous_shop .dream .true {
-            width: 198px;
-            height: 20px;
-            margin: 14px 0;
-            background: url("images/famous_shop.png") no-repeat 0 -448px;
-        }
-
-        .famous_shop .dream .true a {
-            height: 20px;
-            line-height: 20px;
-            font-size: 14px;
-            color: #666;
-        }
-
-        .famous_shop .dream .image {
-            width: 196px;
-            height: 260px;
-            border: 1px solid #eeeeee;
-        }
-
-        .category {
-            width: 100%;
-        }
-
-        .category .shop .title h3 span {
-            width: 38px;
-            height: 40px;
-            background: url("images/category-bg.png") no-repeat 0 5px;
-        }
-
-        .category .famous_shop .item_list {
-            width: 1170px;
-            height: 1560px;
-            border: 1px solid #eeeeee;
-        }
-
-        .category .famous_shop .item {
-            width: 291px;
-            height: 311px;
-            border-top: 1px solid #eee;
-            border-left: 1px solid #eee;
-        }
-
-        .general_template {
-            width: 100%;
-        }
-
-        .general_template .top {
-            width: 100%;
-            height: 30px;
-            margin-bottom: 12px;
-        }
-
-        .general_template .top .title {
-            height: 100%;
-            line-height: 30px;
-            padding-left: 45px;
-            font-size: 20px;
-            color: #666;
-            background: url("images/title_bg.png") no-repeat;
-        }
-
-        .general_template .top .nav a {
-            height: 14px;
-            line-height: 14px;
-            padding: 0 9px;
-            margin-top: 13px;
-            border-right: 1px solid #ddd;
-            font-size: 14px;
-            color: #666;
-        }
-
-        .general_template .top .nav a.all {
-            background: url("images/arrow_right.png") no-repeat right center;
-            border-right: none;
-        }
-
-        .general_template .item_list .item {
-
-            width: 291px;
-            border-top: 1px solid #eeeeee;
-            border-left: 1px solid #eeeeee;
-        }
-
-        .general_template .item_list .item .image {
-            display: block;
-            position: relative;
-            padding: 12px 15px 0;
-        }
-
-        .general_template .item_list .item .mark {
-            position:absolute;
-            left: 15px;
-            top: 8px;
-            height: 40px;
-        }
-
-        .general_template .item .mark span {
-            width: 43px;
-            height: 40px;
-            margin-right: -3px;
-            color: #fff;
-            background-image: url("images/logo.png");
-            background-repeat: no-repeat;
-            text-indent: -9999px;
-        }
-
-        .general_template .item .mark .multi {
-            background-position: 0 -493px;
-        }
-
-        .general_template .item .mark .no_booking {
-            background-position: 0 -451px;
-        }
-
-        .general_template .item .description {
-            display: block;
-            margin-top: 12px;
-            padding: 0 15px 5px;
-        }
-
-        .general_template .item .description h3 {
-            height: 24px;
-            line-height: 24px;
-            font-size: 14px;
-            color: #666;
-            text-indent: -0.5em;
-        }
-
-        .general_template .item .description p {
-            height: 24px;
-            line-height: 24px;
-            font-size: 14px;
-            color: #999;
-        }
-
-        .general_template .item .detail {
-            margin-bottom: 10px;
-            padding: 0 15px;
-            height: 24px;
-        }
-        .general_template .item .discount_price {
-            font: 20px arial,sans-serif;
-            color: #f76120;
-
-        }
-
-        .general_template .item .discount_price span {
-            margin: 0.1em;
-        }
-
-        .general_template .item .original_price {
-            font: 12px arial,sans-serif;
-            text-decoration: line-through;
-            color: #999;
-            margin: 7px 0 0 5px;
-        }
-
-        .general_template .item .saled_quantity {
-            margin-top: 6px;
-            color: #999;
-        }
-
-        .general_template .item .comments {
-            display: block;
-            height: 12px;
-            line-height: 12px;
-            padding: 11px 15px 22px;
-            border-top: 1px dotted #ddd ;
-
-        }
-
-        .general_template .item .comments .dark_stars{
-            width: 60px;
-            height: 12px;
-            background: url("images/dark_stars.png") repeat-x;
-        }
-
-        .general_template .item .comments .bright_stars{
-            width: 48px;
-            height: 12px;
-            background: url("images/bright_stars.png") repeat-x;
-        }
-
-        .general_template .item .comments_link {
-            padding-left: 9px;
-            color: #999999;
-        }
-
-        .general_template  .more_link {
-            width: 1170px;
-            height: 48px;
-            line-height: 48px;
-            background: #f6f6f6;
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .general_template .more_link a {
-            font-size: 14px;
-            color: #666666;
-        }
-
-        .footer_wrapper .top, .footer_wrapper .middle {
-            width: 1170px;
-            margin: 0 auto;
-        }
-
-        .footer_wrapper .bottom {
-            width: 100%;
-            margin-top: 10px;
-            border-top: 1px solid #dddddd;
-            background: #f9f9f9;
-        }
-
-        .footer_wrapper .top .bottom_links a {
-            width: 90px;
-            height: 23px;
-            line-height: 23px;
-            text-align: center;
-            font-size: 12px;
-            color: #666666;
-            border: 1px solid #eeeeee;
-        }
-
-        .footer_wrapper .top .bottom_links a.active {
-            background: #eeeeee;
-        }
-
-        .footer_wrapper .top .other_bottom_links {
-            width: 1168px;
-            height: 41px;
-            border: 1px solid #EEEEEE;
-            border-top: none;
-            padding-left: 15px;
-        }
-
-        .footer_wrapper .top .other_bottom_links a {
-            width: 95px;
-            height: 41px;
-            line-height: 41px;
-            font-size: 12px;
-            color: #666666;
-        }
-
-        .footer_wrapper .middle {
-            width: 1170px;
-            border-top: 3px double #eee;
-            margin-top: 20px;
-            padding: 20px 0 0 10px;
-        }
-
-        .footer_wrapper .middle dl {
-            width: 216px;
-        }
-
-        .footer_wrapper .middle dl.last {
-            width: 207px;
-            border-right: 1px solid #eeeeee;
-        }
-
-        .footer_wrapper .middle dl dt {
-            height: 20px;
-            line-height: 20px;
-            font-size: 14px;
-            font-weight: bold;
-            color: #666666;
-            padding-bottom: 18px;
-        }
-
-        .footer_wrapper .middle dl dd {
-            height: 12px;
-            line-height: 12px;
-            padding-bottom: 9px;
-            font-size: 12px;
-            color: #999999;
-            cursor: pointer;
-        }
-
-        .footer_wrapper .middle .contact {
-            padding-left: 37px;
-        }
-
-        .footer_wrapper .middle .contact .face {
-            width: 49px;
-            height: 45px;
-            background: url("images/footer_bg.png") no-repeat 0 -80px;
-        }
-
-        .footer_wrapper .middle .contact .phone {
-            height: 30px;
-            line-height: 30px;
-            font-size: 14px;
-            color: #666666;
-        }
-        .footer_wrapper .middle .contact .number strong{
-            font-size: 18px;
-            color: #666;
-        }
-
-        .footer_wrapper .middle .contact .number {
-            height: 18px;
-            font-size: 10px;
-            color: #999;
-            margin-bottom: 33px;
-        }
-
-        .footer_wrapper .middle .contact p {
-            height: 18px;
-            line-height: 18px;
-            font-size: 12px;
-            color: #666666;
-        }
-
-        .footer_wrapper .middle .contact p a {
-            color: #2bb8aa;
-        }
-
-        .footer_wrapper .bottom p {
-            width: 1170px;
-            height: 68px;
-            line-height: 68px;
-            margin: 0 auto;
-            text-align: center;
-            font-size: 12px;
-            color: #999999;
-        }
-
-        .footer_wrapper .bottom div {
-            width: 600px;
-            height: 38px;
-            padding: 2px 0 41px;
-            margin: 0 auto;
-        }
-
-        .footer_wrapper .bottom a {
-            height: 38px;
-            margin-right: 4px;
-            background: url("images/footer_bg.png") no-repeat;
-        }
-
-        .footer_wrapper .bottom a.beian {
-            width: 109px;
-            background-position: 0 -167px;
-        }
-
-        .footer_wrapper .bottom a.gongshang {
-            width: 40px;
-            background: url("images/gongshangpng.png") no-repeat 0 -2px;
-        }
-
-        .footer_wrapper .bottom a.alipay {
-            width: 123px;
-            background-position: 0 0;
-        }
-
-        .footer_wrapper .bottom a.qqpay {
-            width: 83px;
-            background-position: 0 -207px;
-        }
-
-        .footer_wrapper .bottom a.trust {
-            width: 107px;
-            background-position: 0 -127px;
-        }
-
-        .footer_wrapper .bottom a.customer {
-            width: 107px;
-            background-position: 0 -40px;
-        }
-    </style>
+    <title>美团网</title>
+    <link rel="stylesheet" href="css/w_style.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <script src="js/jquery-1.7.2.js"></script>
+    <script src="js/jq.js"></script>
 </head>
 <body>
-    <div class="header_wrapper">
-        <div class="header clearfix">
-            <div class="login fl">
-                <a class="fl favorite" href="javascript:;">
-                    <i class="F-glob F-glob-star-border"></i>
-                    收藏美团
-                </a>
-                <a class="fl entry" href="javascript:;">登录</a>
-                <a class="fl register" href="javascript:;">
-                    注册
-                    <i class="vertical-bar"></i>
-                </a>
-                <a class="fl phone" href="javascript:;">
-                    <i class="F-glob F-glob-phone"></i>
-                    手机美团
-                    <i class="tri_down"></i>
-                </a>
-            </div>
-            <div class="my-info fr">
-                <a class="fl my-order" href="javascript:;">我的订单</a>
-                <a class="fl" href="javascript:;">
-                    我的美团
-                    <i class="tri_down"></i>
-                    <i class="vertical-bar"></i>
-                </a>
-                <a class="fl" href="javascript:;">
-                    最近浏览
-                    <i class="tri_down"></i>
-                    <i class="vertical-bar"></i>
-                </a>
-                <a class="fl cart" href="javascript:;">
-                    <i class="F-glob F-glob-cart"></i>
-                    购物车<span>0</span>件
-                    <i class="tri_down"></i>
-                    <i class="vertical-bar"></i>
-                </a>
-                <a class="fl" href="javascript:;">
-                    联系客服
-                    <i class="tri_down"></i>
-                    <i class="vertical-bar"></i>
-                </a>
-                <a class="fl" href="javascript:;">
-                    我是商家
-                    <i class="tri_down"></i>
-                    <i class="vertical-bar"></i>
-                </a>
-                <a class="fl more" href="javascript:;">
-                    更多
-                    <i class="tri_down"></i>
-                </a>
+
+<!--苏元-->
+<div class="su_tit_back ">
+    <div class="su_tit all_width clearfix">
+        <p>美团一次 美一次
+            <a href="#">登录</a>
+            <a class="su_tit_pa" href="#">注册</a>
+        </p>
+        <p class="su_tit_p">
+            <a href="#">手机美团</a>
+        </p>
+        <dl class="su_tit_dl">
+            <dt><a href="#">我的订单</a></dt>
+            <dd><a href="#">我的美团</a></dd>
+            <dd><a href="#">最近浏览</a></dd>
+            <dd><a href="#"><i></i>购物车<span>0</span>件</a></dd>
+            <dd><a href="#">联系客服</a></dd>
+            <dd><a href="#">我是商家</a></dd>
+            <dd><a href="#">更多</a></dd>
+        </dl>
+    </div>
+</div>
+<div class="w_wrapper">
+    <a href="#" class="w_banner_s"></a>
+</div>
+<div class="su_tit1 all_width clearfix">
+    <h1><a href="#">美团网</a></h1>
+    <p class="su_tit1_p">北京<br/>
+        <a href="#">切换城市</a>
+    </p>
+    <div class="su_tit1_cen">
+        <p class="su_tit1_1_cen1 clearfix">
+            <a href="#">团购</a>
+            <input class="input1" type="text" placeholder="请输入商品名称、地址等"/>
+            <input class="input2" type="submit" value="搜索">
+        </p>
+        <div class="su_tit1_cen2">
+            <a href="#">电影</a>
+            <a class="su_tit1_cena" href="#">自助餐</a>
+            <a class="su_tit1_cena" href="#">KTV</a>
+            <a class="su_tit1_cena" href="#">生日蛋糕</a>
+            <a class="su_tit1_cena" href="#">烤肉</a>
+            <a class="su_tit1_cena" href="#">按摩</a>
+            <a class="su_tit1_cena" href="#">汉丽轩</a>
+            <a class="su_tit1_cena" href="#">蛋糕</a>
+            <a class="su_tit1_cena" href="#">电影票</a>
+        </div>
+    </div>
+    <div class="su_tit1_cen3 clearfix">
+    </div>
+
+</div>
+
+<!--王银伟-->
+    <div class="w_main_nav_bg">
+        <div class="w_wrapper clearfix">
+            <h2 class="w_nav_tit fl">
+                <a href="#">全部分类</a>
+            </h2>
+            <ul class="w_main_nav fl">
+                <li>
+                    <a href="#">首页</a>
+                </li>
+                <li>
+                    <a href="#">身边团购</a>
+                </li>
+                <li>
+                    <a href="#">身边外卖</a>
+                </li>
+                <li>
+                    <a href="#">今日外卖</a>
+                </li>
+                <li>
+                    <a href="#">今日新单</a>
+                </li>
+                <li>
+                    <a href="#">购物</a>
+                </li>
+                <li>
+                    <a href="#">商家点评</a>
+                </li>
+                <li>
+                    <a href="#">大牌街</a>
+                </li>
+                <li class="clearfix">
+                    <i class="w_time fl"></i>
+                    <a href="#" class="fl w_lase_cp">名店抢购</a>
+                </li>
+            </ul>
+            <div class="w_down_mt fl">
+                <a href="#" class="clearfix"><i class="mt_ewm fl"></i><span class="fl">下载美团手机版</span></a>
             </div>
         </div>
     </div>
-    <div class="content_wrapper">
-        <div class="banner clearfix">
-            <a class="fl" href="javascript:;">
-                <img src="images/banner.jpg" border="0">
-                <i class="close_btn"></i>
-                <span>
-                    <i class="gray"></i>
-                    <i class="green"></i>
-                </span>
-            </a>
+
+
+<!--侧边导航和banner-->
+
+<div class="w_wrapper clearfix">
+    <ul class="w_sidebar_nav fl">
+        <li>
+            <h3>
+                <a href="#">美食</a>
+            </h3>
+            <p class="w_sidebar_font clearfix">
+                <a href="#">自助餐</a>
+                <a href="#">火锅</a>
+                <a href="#">烤肉</a>
+            </p>
+            <i class="w_arrow_rt"></i>
+        </li>
+        <li>
+            <h3>
+                <a href="#">美食</a>
+            </h3>
+            <p class="w_sidebar_font clearfix">
+                <a href="#">自助餐</a>
+                <a href="#">火锅</a>
+                <a href="#">烤肉</a>
+                <i class="w_arrow_rt"></i>
+            </p>
+        </li>
+        <li>
+            <h3>
+                <a href="#">美食</a>
+                <i class="w_arrow_rt"></i>
+            </h3>
+        </li>
+        <li>
+            <h3>
+                <a href="#">美食</a>
+            </h3>
+            <p class="w_sidebar_font clearfix"">
+                <a href="#">自助餐</a>
+                <a href="#">火锅</a>
+                <a href="#">烤肉</a>
+            </p>
+            <i class="w_arrow_rt"></i>
+        </li>
+        <li>
+            <h3>
+                <a href="#">美食</a>
+            </h3>
+            <p class="w_sidebar_font clearfix"">
+                <a href="#">自助餐</a>
+                <a href="#">火锅</a>
+                <a href="#">烤肉</a>
+            </p>
+            <i class="w_arrow_rt"></i>
+        </li>
+        <li>
+            <h3>
+                <a href="#">美食</a>
+            </h3>
+            <p class="w_sidebar_font clearfix"">
+                <a href="#">自助餐</a>
+                <a href="#">火锅</a>
+                <a href="#">烤肉</a>
+            </p>
+            <i class="w_arrow_rt"></i>
+        </li>
+        <li>
+            <h3>
+                <a href="#">美食</a>
+            </h3>
+            <p class="w_sidebar_font clearfix"">
+                <a href="#">自助餐</a>
+                <a href="#">火锅</a>
+                <a href="#">烤肉</a>
+            </p>
+            <i class="w_arrow_rt"></i>
+        </li>
+        <li>
+            <h3>
+                <a href="#">美食</a>
+            </h3>
+            <p class="w_sidebar_font clearfix"">
+                <a href="#">自助餐</a>
+                <a href="#">火锅</a>
+                <a href="#">烤肉</a>
+            </p>
+            <i class="w_arrow_rt"></i>
+        </li>
+        <li class="w_last">
+            <h3>
+                <a href="#">美食</a>
+            </h3>
+            <i class="w_arrow_rt"></i>
+        </li>
+    </ul>
+    <div class="w_banner_container fl">
+        <ul class="w_nav_sub clearfix">
+            <li class="clearfix">
+                <b class="w_h fl"></b><i class="fl ban_tit">热门团购</i>
+            </li>
+            <li>
+                <a href="#" class="w_col_c">代金劵</a>
+            </li>
+            <li>
+                <a href="#" class="w_col_c" >电影</a>
+            </li>
+            <li>
+                <a href="#" class="w_col_c">经济型酒店</a>
+            </li>
+            <li>
+                <a href="#" class="w_col_c">KTV</a>
+            </li>
+            <li>
+                <a href="#" class="w_col_c">火锅</a>
+            </li>
+            <li>
+                <a href="#">烤肉</a>
+            </li>
+            <li>
+                <a href="#">足疗按摩</a>
+            </li>
+            <li>
+                <a href="#">游泳/水上乐园</a>
+            </li>
+            <li>
+                <a href="#">景点门票</a>
+            </li>
+            <li>
+                <a href="#">本地/周边游</a>
+            </li>
+        </ul>
+        <ul class="w_nav_sub clearfix">
+            <li class="clearfix">
+                <b class="w_dw fl"></b><i class="fl ban_tit">热门团购</i>
+            </li>
+            <li>
+                <a href="#" class="w_col_c">代金劵</a>
+            </li>
+            <li>
+                <a href="#" class="w_col_c" >电影</a>
+            </li>
+            <li>
+                <a href="#" class="w_col_c">经济型酒店</a>
+            </li>
+            <li>
+                <a href="#" class="w_col_c">KTV</a>
+            </li>
+            <li>
+                <a href="#" class="w_col_c">火锅</a>
+            </li>
+            <li>
+                <a href="#">烤肉</a>
+            </li>
+            <li>
+                <a href="#">足疗按摩</a>
+            </li>
+            <li>
+                <a href="#">游泳/水上乐园</a>
+            </li>
+            <li>
+                <a href="#">景点门票</a>
+            </li>
+            <li>
+                <a href="#">本地/周边游</a>
+            </li>
+        </ul>
+        <ul class="w_nav_sub clearfix">
+            <li class="clearfix">
+                <b class="w_hot fl"></b><i class="fl ban_tit">热门团购</i>
+            </li>
+            <li>
+                <a href="#" class="w_col_c">代金劵</a>
+            </li>
+            <li>
+                <a href="#" class="w_col_c" >电影</a>
+            </li>
+            <li>
+                <a href="#" class="w_col_c">经济型酒店</a>
+            </li>
+            <li>
+                <a href="#" class="w_col_c">KTV</a>
+            </li>
+            <li>
+                <a href="#" class="w_col_c">火锅</a>
+            </li>
+            <li>
+                <a href="#">烤肉</a>
+            </li>
+            <li>
+                <a href="#">足疗按摩</a>
+            </li>
+            <li>
+                <a href="#">游泳/水上乐园</a>
+            </li>
+            <li>
+                <a href="#">景点门票</a>
+            </li>
+            <li>
+                <a href="#">本地/周边游</a>
+            </li>
+        </ul>
+        <div class="w_banner_tit clearfix">
+            <h3 class="fl"><i class="w_star fl"></i><b class="fl">本周精选</b></h3>
+            <div class="w_btn fr">
+                <a href="#" class="active"></a>
+                <a href="#"></a>
+                <a href="#"></a>
+                <a href="#"></a>
+                <a href="#"></a>
+                <a href="#"></a>
+            </div>
         </div>
-        <div class="search clearfix">
-            <div class="city fl">
-                <a class="logo fl" href="javascript:;"></a>
-                <div class="fl">
-                    <h3>上海</h3>
-                    <a class="switch" href="javascript:;">切换城市</a>
-                </div>
-            </div>
-            <div class="fl search_box">
-                <div class="search_bar clearfix">
-                    <div class="fl border clearfix">
-                        <a class="fl" href="javascript:;">
-                            团购
-                            <i class="tri_down"></i>
-                        </a>
-                        <input class="fltext" placeholder="请输入商品名称、地址等">
-                    </div>
-                    <input class="fl go" type="button" value="搜索">
-                </div>
-                <div class="rec">
-                    <a class="fl" href="javascript:;">欧莱雅</a>
-                    <a class="fl" href="javascript:;">电影</a>
-                    <a class="fl" href="javascript:;">蛋糕</a>
-                    <a class="fl" href="javascript:;">自助餐</a>
-                    <a class="fl" href="javascript:;">火锅</a>
-                    <a class="fl" href="javascript:;">外婆家</a>
-                    <a class="fl" href="javascript:;">外滩酒店</a>
-                    <a class="fl" href="javascript:;">汗蒸</a>
-                    <a class="fl" href="javascript:;">钟点房</a>
-                </div>
-            </div>
-            <div class="fr refund">
-                <a class="fl" href="javascript:;">
-                    <i class="F-glob F-glob-commitment-retire"></i>
-                    随时退
+
+        <div class="w_goods_ct clearfix active">
+            <div class="w_goods_box fl">
+                <a href="#">
+                    <img src="img/img_01.jpg" alt="" title=""/>
                 </a>
-                <a class="fl" href="javascript:;">
-                    <i class="F-glob F-glob-commitment-free"></i>
-                    不满意免单
-                </a>
-                <a class="fl" href="javascript:;">
-                    <i class="F-glob F-glob-commitment-expire"></i>
-                    过期退
-                </a>
-            </div>
-        </div>
-        <div class="top_nav">
-            <dl class="fl all_kinds">
-                <dt class="green_bg">全部分类</dt>
-                <dd class="sidebar">
-                    <dl>
-                        <dt class="clearfix fl">
-                            <a class="fl" href="javascript:;">
-                                美食
-                            </a>
-                        </dt>
-                        <dd class="clearfix fr">
-                            <a class="fl" href="javascript:;">代金券</a>
-                            <a class="fl" href="javascript:;">自助餐</a>
-                        </dd>
-                        <i class="F-glob F-glob-caret-right-thin"></i>
-                    </dl>
-                    <dl>
-                        <dt class="clearfix fl">
-                            <a class="fl" href="javascript:;">
-                                酒店
-                            </a>
-                        </dt>
-                        <dd class="clearfix fr">
-                            <a class="fl" href="javascript:;">经济型酒店</a>
-
-                        </dd>
-                        <i class="F-glob F-glob-caret-right-thin"></i>
-                    </dl>
-                    <dl>
-                        <dt class="clearfix fl">
-                            <a class="fl" href="javascript:;">
-                                电影/在线选座
-                            </a>
-                        </dt>
-                        <dd class="clearfix fr">
-
-                        </dd>
-                        <i class="F-glob F-glob-caret-right-thin"></i>
-                    </dl>
-                    <dl>
-                        <dt class="clearfix fl">
-                            <a class="fl" href="javascript:;">
-                                KTV/在线预订
-                            </a>
-                        </dt>
-                        <dd class="clearfix fr">
-
-                        </dd>
-                        <i class="F-glob F-glob-caret-right-thin"></i>
-                    </dl>
-                    <dl>
-                        <dt class="clearfix fl">
-                            <a class="fl" href="javascript:;">
-                                休闲娱乐
-                            </a>
-                        </dt>
-                        <dd class="clearfix fr">
-                            <a class="fl" href="javascript:;">足疗按摩</a>
-                            <a class="fl" href="javascript:;">温泉</a>
-                        </dd>
-                        <i class="F-glob F-glob-caret-right-thin"></i>
-                    </dl>
-                    <dl>
-                        <dt class="clearfix fl">
-                            <a class="fl" href="javascript:;">
-                                周边游/旅游
-                            </a>
-                        </dt>
-                        <dd class="clearfix fr">
-
-                        </dd>
-                        <i class="F-glob F-glob-caret-right-thin"></i>
-                    </dl>
-                    <dl>
-                        <dt class="clearfix fl">
-                            <a class="fl" href="javascript:;">
-                                生活服务
-                            </a>
-                        </dt>
-                        <dd class="clearfix fr">
-                            <a class="fl" href="javascript:;">婚纱摄影</a>
-                            <a class="fl" href="javascript:;">儿童摄影</a>
-                        </dd>
-                        <i class="F-glob F-glob-caret-right-thin"></i>
-                    </dl>
-                    <dl>
-                        <dt class="clearfix fl">
-                            <a class="fl" href="javascript:;">
-                                购物
-                            </a>
-                        </dt>
-                        <dd class="clearfix fr">
-                            <a class="fl" href="javascript:;">女装</a>
-                            <a class="fl" href="javascript:;">男装</a>
-                            <a class="fl" href="javascript:;">内衣</a>
-                        </dd>
-                        <i class="F-glob F-glob-caret-right-thin"></i>
-                    </dl>
-                    <dl class="last">
-                        <dt class="clearfix fl">
-                            <a class="fl" href="javascript:;">
-                                丽人
-                            </a>
-                        </dt>
-                        <dd class="clearfix fr">
-                            <a class="fl" href="javascript:;">美发</a>
-                            <a class="fl" href="javascript:;">美甲</a>
-                        </dd>
-                        <i class="F-glob F-glob-caret-right-thin"></i>
-                    </dl>
-
-                </dd>
-            </dl>
-            <div class="fl top_nav_item">
-                <a class="fl" href="javascript:;">首页</a>
-                <a class="fl" href="javascript:;">今日新单</a>
-                <a class="fl" href="javascript:;">身边团购</a>
-                <a class="fl" href="javascript:;">购物</a>
-                <a class="fl" href="javascript:;">身边外卖</a>
-                <a class="fl" href="javascript:;">名店抢购</a>
-            </div>
-        </div>
-        <div class="middle_content">
-            <div class="nav_img fl">
-                <div class="hot_nav">
-                    <dl class="clearfix">
-                        <dt class="fl">
-                            <i class="F-glob F-glob-hot"></i>
-                            热门团购
-                        </dt>
-                        <dd class="fl">
-                            <a class="fl orange" href="javascript:;">代金券</a>
-                            <a class="fl orange" href="javascript:;">经济型酒店</a>
-                            <a class="fl orange" href="javascript:;">电影</a>
-                            <a class="fl" href="javascript:;">足疗按摩</a>
-                            <a class="fl" href="javascript:;">婚纱摄影</a>
-                            <a class="fl" href="javascript:;">美发</a>
-                            <a class="fl" href="javascript:;">蛋糕甜点</a>
-                            <a class="fl" href="javascript:;">儿童摄影</a>
-                            <a class="fl orange" href="javascript:;">火锅</a>
-                            <a class="fl" href="javascript:;">美甲</a>
-                        </dd>
-                    </dl>
-                    <dl class="clearfix">
-                        <dt class="fl">
-                            全部区域
-                            <i class="F-glob F-glob-position"></i>
-                        </dt>
-                        <dd class="fl">
-                            <a class="fl" href="javascript:;">浦东新区</a>
-                            <a class="fl" href="javascript:;">徐汇区</a>
-                            <a class="fl" href="javascript:;">长宁区</a>
-                            <a class="fl" href="javascript:;">黄浦区</a>
-                            <a class="fl" href="javascript:;">静安区</a>
-                            <a class="fl" href="javascript:;">闵行区</a>
-                            <a class="fl" href="javascript:;">卢湾区</a>
-                            <a class="fl" href="javascript:;">杨浦区</a>
-                            <a class="fl" href="javascript:;">普陀区</a>
-                        </dd>
-                        <a class="fr more" href="javascript:;">更多</a>
-                    </dl>
-                    <dl class="clearfix">
-                        <dt class="fl">
-                            热门商圈
-                            <i class="F-glob F-glob-shangquan"></i>
-                        </dt>
-                        <dd class="fl">
-                            <a class="fl" href="javascript:;">人民广场</a>
-                            <a class="fl" href="javascript:;">青浦城区</a>
-                            <a class="fl" href="javascript:;">南桥镇</a>
-                            <a class="fl" href="javascript:;">五角场/大学区</a>
-                            <a class="fl" href="javascript:;">八佰伴</a>
-                            <a class="fl" href="javascript:;">莘庄</a>
-                            <a class="fl" href="javascript:;">松江镇</a>
-                            <a class="fl" href="javascript:;">金桥</a>
-                            <a class="fl" href="javascript:;">七宝</a>
-                            <a class="fl" href="javascript:;">天山</a>
-                        </dd>
-                    </dl>
-                </div>
-                <div class="hot_img">
-                    <div class="fl hot_img_left">
-                        <a href="javascript:;">
-                            <img src="images/crab.jpg" width="333" height="232" border="0">
-                            <span class="discount">7.7</span>
-                        </a>
-                        <div class="desc">
-                            <div class="fl title">
-                                <h3><a href="javascript:;">七欣天</a></h3>
-                                <p>波格力蟹1斤，活蟹现杀，肉肥鲜嫩，秘制配方</p>
-                            </div>
-                            <div class="fr price">
-                                ¥<strong>68</strong>
-                            </div>
-                        </div>
+                <div class="w_gs_font_bx clearfix">
+                    <div class="w_font_box fl">
+                        <p class="tit">
+                            巴黎贝甜
+                        </p>
+                        <p class="w_gs_ft">
+                            代金卷1张，可叠加使用，藏在面包里的美味...
+                        </p>
                     </div>
-                    <div class="fr hot_img_right">
-                        <a href="javascript:;">
-                            <img src="images/fish.jpg" width="333" height="232" border="0">
-                            <span class="discount">7.7</span>
-                        </a>
-                        <div class="desc">
-                            <div class="fl title">
-                                <h3><a href="javascript:;">蜀江烤鱼</a></h3>
-                                <p>100元代金券1张，除酒水外全场通用，可叠加使用</p>
-                            </div>
-                            <div class="fr price">
-                                ¥<strong>70.5</strong>
-                            </div>
-                        </div>
-                    </div>
+                   <div class="w_gs_bg fl"></div>
+                    <p class="w_price fl"><span>￥</span>17</p>
+                    <i class="w_allow_rl"></i>
                 </div>
             </div>
-            <div class="fl qrcode">
-                <img src="images/qrcode.png" border="0">
-            </div>
-            <div class="fl super_tuesday">
-                <a class="ads" href="javascript:;">
-                    <h2>超级星期二</h2>
-                    <p>每周10点等你来</p>
-                    <img src="images/clock.jpg">
-                </a>
-            </div>
-
-        </div>
-        <div class="famous_shop">
-            <div class="shop fl">
-                <div class="title">
-                    <a class="fl" href="javascript:;"><h3><span class="fl"></span>名店抢购</h3></a>
-                </div>
-                <div class="item_list clearfix">
-                    <div class="item fl">
-                        <a class="image" href="javascript:;">
-                            <img src="images/item.jpg" width="205" height="124">
-                        </a>
-                        <h3><a href="javascript:;">【陆家嘴】东方明珠一二球电子票自由行</a></h3>
-                        <div class="number clearfix">
-                            <span class="fl price">
-                                ¥88
-                            </span>
-                            <span class="fr quantity">
-                                已售<strong>183</strong>
-                            </span>
-                        </div>
-                        <p class="discount"><span>手机购买立减¥15</span></p>
-                    </div>
-                    <div class="item fl">
-                        <a class="image" href="javascript:;">
-                            <img src="images/item.jpg" width="205" height="124">
-                        </a>
-                        <h3><a href="javascript:;">【陆家嘴】东方明珠一二球电子票自由行</a></h3>
-                        <div class="number clearfix">
-                            <span class="fl pice">
-                                ¥88
-                            </span>
-                            <span class="fr quantity">
-                                已售<strong>183</strong>
-                            </span>
-                        </div>
-                        <p class="discount"><span>手机购买立减¥15</span></p>
-                    </div>
-                    <div class="item fl">
-                        <a class="image" href="javascript:;">
-                            <img src="images/item.jpg" width="205" height="124">
-                        </a>
-                        <h3><a href="javascript:;">【陆家嘴】东方明珠一二球电子票自由行</a></h3>
-                        <div class="number clearfix">
-                            <span class="fl price">
-                                ¥88
-                            </span>
-                            <span class="fr quantity">
-                                已售<strong>183</strong>
-                            </span>
-                        </div>
-                        <p class="discount"><span>手机购买立减¥15</span></p>
-                    </div>
-                    <div class="item fl last">
-                        <a class="image" href="javascript:;">
-                            <img src="images/item.jpg" width="205" height="124">
-                        </a>
-                        <h3><a href="javascript:;">【陆家嘴】东方明珠一二球电子票自由行</a></h3>
-                        <div class="number clearfix">
-                            <span class="fl price">
-                                ¥88
-                            </span>
-                            <span class="fr quantity">
-                                已售<strong>183</strong>
-                            </span>
-                        </div>
-                        <p class="discount"><span>手机购买立减¥15</span></p>
-                    </div>
-                </div>
-            </div>
-            <div class="dream fr">
-                <div class="true">
-                    <a class="fr" href="javascript:;">全部</a>                    
-                </div>
-                <div class="image">
-                    <a class="fl" href="javascript:;">
-                        <img src="images/phone.jpg" width="196" height="260">
+                <div class="w_goods_box fl">
+                    <a href="#" class="w_two">
+                        <img src="img/img_01.jpg" alt="" title=""/>
                     </a>
+                    <div class="w_gs_font_bx w_wid  clearfix">
+                        <div class="w_font_box fl ">
+                            <p class="tit">
+                                巴黎贝甜
+                            </p>
+                            <p class="w_gs_ft">
+                                代金卷1张，可叠加使用，藏在面包里的美味...
+                            </p>
+                        </div>
+                        <div class="w_gs_bg fl"></div>
+                        <p class="w_price fl w_wid_01"><span>￥</span>17</p>
+                        <i class="w_allow_lt"></i>
+                    </div>
+                </div>
+            </div>
+
+        <div class="w_goods_ct clearfix">
+            <div class="w_goods_box fl">
+                <a href="#">
+                    <img src="img/img_05.jpg" alt="" title=""/>
+                </a>
+                <div class="w_gs_font_bx clearfix">
+                    <div class="w_font_box fl">
+                        <p class="tit">
+                            巴黎贝甜
+                        </p>
+                        <p class="w_gs_ft">
+                            代金卷1张，可叠加使用，藏在面包里的美味...
+                        </p>
+                    </div>
+                    <div class="w_gs_bg fl"></div>
+                    <p class="w_price fl"><span>￥</span>17</p>
+                    <i class="w_allow_rl"></i>
+                </div>
+            </div>
+            <div class="w_goods_box fl">
+                <a href="#" class="w_two">
+                    <img src="img/img_05.jpg" alt="" title=""/>
+                </a>
+                <div class="w_gs_font_bx w_wid  clearfix">
+                    <div class="w_font_box fl ">
+                        <p class="tit">
+                            巴黎贝甜
+                        </p>
+                        <p class="w_gs_ft">
+                            代金卷1张，可叠加使用，藏在面包里的美味...
+                        </p>
+                    </div>
+                    <div class="w_gs_bg fl"></div>
+                    <p class="w_price fl w_wid_01"><span>￥</span>17</p>
+                    <i class="w_allow_lt"></i>
                 </div>
             </div>
         </div>
-        <div class="category">
-            <div class="general_template food">
-                    <div class="top clearfix">
-                        <a class="fl title" href="javascript:;"><h3><span class="fl"></span>美食</h3></a>
-                        <div class="fr nav clearfix">
-                            <a class="fl" href="javascript:;">代金券</a>
-                            <a class="fl" href="javascript:;">自助餐</a>
-                            <a class="fl" href="javascript:;">火锅</a>
-                            <a class="fl" href="javascript:;">烧烤烤肉</a>
-                            <a class="fl" href="javascript:;">香锅烤鱼</a>
-                            <a class="fl" href="javascript:;">西餐</a>
-                            <a class="fl all" href="javascript:;">全部</a>
-                        </div>
+
+        <div class="w_goods_ct clearfix">
+            <div class="w_goods_box fl">
+                <a href="#">
+                    <img src="img/img_01.jpg" alt="" title=""/>
+                </a>
+                <div class="w_gs_font_bx clearfix">
+                    <div class="w_font_box fl">
+                        <p class="tit">
+                            巴黎贝甜
+                        </p>
+                        <p class="w_gs_ft">
+                            代金卷1张，可叠加使用，藏在面包里的美味...
+                        </p>
                     </div>
-                    <div class="item_list clearfix">
-                        <div class="item fl">
-                            <a class="image" href="javascript:;">
-                                <img src="images/bud.jpg" width="260" height="154">
-                                <span class="mark clearfix">
-                                    <span class="fl multi">多套餐</span>
-                                    <span class="fl no_booking">免预约</span>
-                                </span>
-                            </a>
-                            <a class="description"  href="javascript:;">
-                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
-                                <p>饮品6选1，精致美味，幸福滋味</p>
-                            </a>
-                            <div class="detail clearfix">
-                                    <span class="fl discount_price">
-                                        ¥<span>5.6</span>
-                                    </span>
-                                    <span class="fl original_price">¥7</span>
-                                    <span class="fr saled_quantity">
-                                        已售<strong>183</strong>
-                                    </span>
-                                </div>
-                            <a class="comments clearfix" href="javascript:;">
-                                <span class="fr comments_link">100人评价</span>
-                                <span class="fr dark_stars">
-                                    <span class="fl bright_stars"></span>
-                                </span>
-                            </a>
-                        </div>
-                        <div class="item fl">
-                            <a class="image" href="javascript:;">
-                                <img src="images/bud.jpg" width="260" height="154">
-                                <span class="mark clearfix">
-                                    <span class="fl multi">多套餐</span>
-                                    <span class="fl no_booking">免预约</span>
-                                </span>
-                            </a>
-                            <a class="description"  href="javascript:;">
-                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
-                                <p>饮品6选1，精致美味，幸福滋味</p>
-                            </a>
-                            <div class="detail clearfix">
-                                    <span class="fl discount_price">
-                                        ¥<span>5.6</span>
-                                    </span>
-                                <span class="fl original_price">¥7</span>
-                                    <span class="fr saled_quantity">
-                                        已售<strong>183</strong>
-                                    </span>
-                            </div>
-                            <a class="comments clearfix" href="javascript:;">
-                                <span class="fr comments_link">100人评价</span>
-                                <span class="fr dark_stars">
-                                    <span class="fl bright_stars"></span>
-                                </span>
-                            </a>
-                        </div>
-                        <div class="item fl">
-                            <a class="image" href="javascript:;">
-                                <img src="images/bud.jpg" width="260" height="154">
-                                <span class="mark clearfix">
-                                    <span class="fl multi">多套餐</span>
-                                    <span class="fl no_booking">免预约</span>
-                                </span>
-                            </a>
-                            <a class="description"  href="javascript:;">
-                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
-                                <p>饮品6选1，精致美味，幸福滋味</p>
-                            </a>
-                            <div class="detail clearfix">
-                                    <span class="fl discount_price">
-                                        ¥<span>5.6</span>
-                                    </span>
-                                <span class="fl original_price">¥7</span>
-                                    <span class="fr saled_quantity">
-                                        已售<strong>183</strong>
-                                    </span>
-                            </div>
-                            <a class="comments clearfix" href="javascript:;">
-                                <span class="fr comments_link">100人评价</span>
-                                <span class="fr dark_stars">
-                                    <span class="fl bright_stars"></span>
-                                </span>
-                            </a>
-                        </div>
-                        <div class="item fl">
-                            <a class="image" href="javascript:;">
-                                <img src="images/bud.jpg" width="260" height="154">
-                                <span class="mark clearfix">
-                                    <span class="fl multi">多套餐</span>
-                                    <span class="fl no_booking">免预约</span>
-                                </span>
-                            </a>
-                            <a class="description"  href="javascript:;">
-                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
-                                <p>饮品6选1，精致美味，幸福滋味</p>
-                            </a>
-                            <div class="detail clearfix">
-                                    <span class="fl discount_price">
-                                        ¥<span>5.6</span>
-                                    </span>
-                                <span class="fl original_price">¥7</span>
-                                    <span class="fr saled_quantity">
-                                        已售<strong>183</strong>
-                                    </span>
-                            </div>
-                            <a class="comments clearfix" href="javascript:;">
-                                <span class="fr comments_link">100人评价</span>
-                                <span class="fr dark_stars">
-                                    <span class="fl bright_stars"></span>
-                                </span>
-                            </a>
-                        </div>
-                        <div class="item fl">
-                            <a class="image" href="javascript:;">
-                                <img src="images/bud.jpg" width="260" height="154">
-                                <span class="mark clearfix">
-                                    <span class="fl multi">多套餐</span>
-                                    <span class="fl no_booking">免预约</span>
-                                </span>
-                            </a>
-                            <a class="description"  href="javascript:;">
-                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
-                                <p>饮品6选1，精致美味，幸福滋味</p>
-                            </a>
-                            <div class="detail clearfix">
-                                    <span class="fl discount_price">
-                                        ¥<span>5.6</span>
-                                    </span>
-                                <span class="fl original_price">¥7</span>
-                                    <span class="fr saled_quantity">
-                                        已售<strong>183</strong>
-                                    </span>
-                            </div>
-                            <a class="comments clearfix" href="javascript:;">
-                                <span class="fr comments_link">100人评价</span>
-                                <span class="fr dark_stars">
-                                    <span class="fl bright_stars"></span>
-                                </span>
-                            </a>
-                        </div>
-                        <div class="item fl">
-                            <a class="image" href="javascript:;">
-                                <img src="images/bud.jpg" width="260" height="154">
-                                <span class="mark clearfix">
-                                    <span class="fl multi">多套餐</span>
-                                    <span class="fl no_booking">免预约</span>
-                                </span>
-                            </a>
-                            <a class="description"  href="javascript:;">
-                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
-                                <p>饮品6选1，精致美味，幸福滋味</p>
-                            </a>
-                            <div class="detail clearfix">
-                                    <span class="fl discount_price">
-                                        ¥<span>5.6</span>
-                                    </span>
-                                <span class="fl original_price">¥7</span>
-                                    <span class="fr saled_quantity">
-                                        已售<strong>183</strong>
-                                    </span>
-                            </div>
-                            <a class="comments clearfix" href="javascript:;">
-                                <span class="fr comments_link">100人评价</span>
-                                <span class="fr dark_stars">
-                                    <span class="fl bright_stars"></span>
-                                </span>
-                            </a>
-                        </div>
-                        <div class="item fl">
-                            <a class="image" href="javascript:;">
-                                <img src="images/bud.jpg" width="260" height="154">
-                                <span class="mark clearfix">
-                                    <span class="fl multi">多套餐</span>
-                                    <span class="fl no_booking">免预约</span>
-                                </span>
-                            </a>
-                            <a class="description"  href="javascript:;">
-                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
-                                <p>饮品6选1，精致美味，幸福滋味</p>
-                            </a>
-                            <div class="detail clearfix">
-                                    <span class="fl discount_price">
-                                        ¥<span>5.6</span>
-                                    </span>
-                                <span class="fl original_price">¥7</span>
-                                    <span class="fr saled_quantity">
-                                        已售<strong>183</strong>
-                                    </span>
-                            </div>
-                            <a class="comments clearfix" href="javascript:;">
-                                <span class="fr comments_link">100人评价</span>
-                                <span class="fr dark_stars">
-                                    <span class="fl bright_stars"></span>
-                                </span>
-                            </a>
-                        </div>
-                        <div class="item fl">
-                            <a class="image" href="javascript:;">
-                                <img src="images/bud.jpg" width="260" height="154">
-                                <span class="mark clearfix">
-                                    <span class="fl multi">多套餐</span>
-                                    <span class="fl no_booking">免预约</span>
-                                </span>
-                            </a>
-                            <a class="description"  href="javascript:;">
-                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
-                                <p>饮品6选1，精致美味，幸福滋味</p>
-                            </a>
-                            <div class="detail clearfix">
-                                    <span class="fl discount_price">
-                                        ¥<span>5.6</span>
-                                    </span>
-                                <span class="fl original_price">¥7</span>
-                                    <span class="fr saled_quantity">
-                                        已售<strong>183</strong>
-                                    </span>
-                            </div>
-                            <a class="comments clearfix" href="javascript:;">
-                                <span class="fr comments_link">100人评价</span>
-                                <span class="fr dark_stars">
-                                    <span class="fl bright_stars"></span>
-                                </span>
-                            </a>
-                        </div>
-                        <div class="item fl">
-                            <a class="image" href="javascript:;">
-                                <img src="images/bud.jpg" width="260" height="154">
-                                <span class="mark clearfix">
-                                    <span class="fl multi">多套餐</span>
-                                    <span class="fl no_booking">免预约</span>
-                                </span>
-                            </a>
-                            <a class="description"  href="javascript:;">
-                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
-                                <p>饮品6选1，精致美味，幸福滋味</p>
-                            </a>
-                            <div class="detail clearfix">
-                                    <span class="fl discount_price">
-                                        ¥<span>5.6</span>
-                                    </span>
-                                <span class="fl original_price">¥7</span>
-                                    <span class="fr saled_quantity">
-                                        已售<strong>183</strong>
-                                    </span>
-                            </div>
-                            <a class="comments clearfix" href="javascript:;">
-                                <span class="fr comments_link">100人评价</span>
-                                <span class="fr dark_stars">
-                                    <span class="fl bright_stars"></span>
-                                </span>
-                            </a>
-                        </div>
-                        <div class="item fl">
-                            <a class="image" href="javascript:;">
-                                <img src="images/bud.jpg" width="260" height="154">
-                                <span class="mark clearfix">
-                                    <span class="fl multi">多套餐</span>
-                                    <span class="fl no_booking">免预约</span>
-                                </span>
-                            </a>
-                            <a class="description"  href="javascript:;">
-                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
-                                <p>饮品6选1，精致美味，幸福滋味</p>
-                            </a>
-                            <div class="detail clearfix">
-                                    <span class="fl discount_price">
-                                        ¥<span>5.6</span>
-                                    </span>
-                                <span class="fl original_price">¥7</span>
-                                    <span class="fr saled_quantity">
-                                        已售<strong>183</strong>
-                                    </span>
-                            </div>
-                            <a class="comments clearfix" href="javascript:;">
-                                <span class="fr comments_link">100人评价</span>
-                                <span class="fr dark_stars">
-                                    <span class="fl bright_stars"></span>
-                                </span>
-                            </a>
-                        </div>
-                        <div class="item fl">
-                            <a class="image" href="javascript:;">
-                                <img src="images/bud.jpg" width="260" height="154">
-                                <span class="mark clearfix">
-                                    <span class="fl multi">多套餐</span>
-                                    <span class="fl no_booking">免预约</span>
-                                </span>
-                            </a>
-                            <a class="description"  href="javascript:;">
-                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
-                                <p>饮品6选1，精致美味，幸福滋味</p>
-                            </a>
-                            <div class="detail clearfix">
-                                    <span class="fl discount_price">
-                                        ¥<span>5.6</span>
-                                    </span>
-                                <span class="fl original_price">¥7</span>
-                                    <span class="fr saled_quantity">
-                                        已售<strong>183</strong>
-                                    </span>
-                            </div>
-                            <a class="comments clearfix" href="javascript:;">
-                                <span class="fr comments_link">100人评价</span>
-                                <span class="fr dark_stars">
-                                    <span class="fl bright_stars"></span>
-                                </span>
-                            </a>
-                        </div>
-                        <div class="item fl">
-                            <a class="image" href="javascript:;">
-                                <img src="images/bud.jpg" width="260" height="154">
-                                <span class="mark clearfix">
-                                    <span class="fl multi">多套餐</span>
-                                    <span class="fl no_booking">免预约</span>
-                                </span>
-                            </a>
-                            <a class="description"  href="javascript:;">
-                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
-                                <p>饮品6选1，精致美味，幸福滋味</p>
-                            </a>
-                            <div class="detail clearfix">
-                                    <span class="fl discount_price">
-                                        ¥<span>5.6</span>
-                                    </span>
-                                <span class="fl original_price">¥7</span>
-                                    <span class="fr saled_quantity">
-                                        已售<strong>183</strong>
-                                    </span>
-                            </div>
-                            <a class="comments clearfix" href="javascript:;">
-                                <span class="fr comments_link">100人评价</span>
-                                <span class="fr dark_stars">
-                                    <span class="fl bright_stars"></span>
-                                </span>
-                            </a>
-                        </div>
-                        <div class="item fl">
-                            <a class="image" href="javascript:;">
-                                <img src="images/bud.jpg" width="260" height="154">
-                                <span class="mark clearfix">
-                                    <span class="fl multi">多套餐</span>
-                                    <span class="fl no_booking">免预约</span>
-                                </span>
-                            </a>
-                            <a class="description"  href="javascript:;">
-                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
-                                <p>饮品6选1，精致美味，幸福滋味</p>
-                            </a>
-                            <div class="detail clearfix">
-                                    <span class="fl discount_price">
-                                        ¥<span>5.6</span>
-                                    </span>
-                                <span class="fl original_price">¥7</span>
-                                    <span class="fr saled_quantity">
-                                        已售<strong>183</strong>
-                                    </span>
-                            </div>
-                            <a class="comments clearfix" href="javascript:;">
-                                <span class="fr comments_link">100人评价</span>
-                                <span class="fr dark_stars">
-                                    <span class="fl bright_stars"></span>
-                                </span>
-                            </a>
-                        </div>
-                        <div class="item fl">
-                            <a class="image" href="javascript:;">
-                                <img src="images/bud.jpg" width="260" height="154">
-                                <span class="mark clearfix">
-                                    <span class="fl multi">多套餐</span>
-                                    <span class="fl no_booking">免预约</span>
-                                </span>
-                            </a>
-                            <a class="description"  href="javascript:;">
-                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
-                                <p>饮品6选1，精致美味，幸福滋味</p>
-                            </a>
-                            <div class="detail clearfix">
-                                    <span class="fl discount_price">
-                                        ¥<span>5.6</span>
-                                    </span>
-                                <span class="fl original_price">¥7</span>
-                                    <span class="fr saled_quantity">
-                                        已售<strong>183</strong>
-                                    </span>
-                            </div>
-                            <a class="comments clearfix" href="javascript:;">
-                                <span class="fr comments_link">100人评价</span>
-                                <span class="fr dark_stars">
-                                    <span class="fl bright_stars"></span>
-                                </span>
-                            </a>
-                        </div>
-                        <div class="item fl">
-                            <a class="image" href="javascript:;">
-                                <img src="images/bud.jpg" width="260" height="154">
-                                <span class="mark clearfix">
-                                    <span class="fl multi">多套餐</span>
-                                    <span class="fl no_booking">免预约</span>
-                                </span>
-                            </a>
-                            <a class="description"  href="javascript:;">
-                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
-                                <p>饮品6选1，精致美味，幸福滋味</p>
-                            </a>
-                            <div class="detail clearfix">
-                                    <span class="fl discount_price">
-                                        ¥<span>5.6</span>
-                                    </span>
-                                <span class="fl original_price">¥7</span>
-                                    <span class="fr saled_quantity">
-                                        已售<strong>183</strong>
-                                    </span>
-                            </div>
-                            <a class="comments clearfix" href="javascript:;">
-                                <span class="fr comments_link">100人评价</span>
-                                <span class="fr dark_stars">
-                                    <span class="fl bright_stars"></span>
-                                </span>
-                            </a>
-                        </div>
-                        <div class="item fl">
-                            <a class="image" href="javascript:;">
-                                <img src="images/bud.jpg" width="260" height="154">
-                                <span class="mark clearfix">
-                                    <span class="fl multi">多套餐</span>
-                                    <span class="fl no_booking">免预约</span>
-                                </span>
-                            </a>
-                            <a class="description"  href="javascript:;">
-                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
-                                <p>饮品6选1，精致美味，幸福滋味</p>
-                            </a>
-                            <div class="detail clearfix">
-                                    <span class="fl discount_price">
-                                        ¥<span>5.6</span>
-                                    </span>
-                                <span class="fl original_price">¥7</span>
-                                    <span class="fr saled_quantity">
-                                        已售<strong>183</strong>
-                                    </span>
-                            </div>
-                            <a class="comments clearfix" href="javascript:;">
-                                <span class="fr comments_link">100人评价</span>
-                                <span class="fr dark_stars">
-                                    <span class="fl bright_stars"></span>
-                                </span>
-                            </a>
-                        </div>
-                        <div class="item fl">
-                            <a class="image" href="javascript:;">
-                                <img src="images/bud.jpg" width="260" height="154">
-                                <span class="mark clearfix">
-                                    <span class="fl multi">多套餐</span>
-                                    <span class="fl no_booking">免预约</span>
-                                </span>
-                            </a>
-                            <a class="description"  href="javascript:;">
-                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
-                                <p>饮品6选1，精致美味，幸福滋味</p>
-                            </a>
-                            <div class="detail clearfix">
-                                    <span class="fl discount_price">
-                                        ¥<span>5.6</span>
-                                    </span>
-                                <span class="fl original_price">¥7</span>
-                                    <span class="fr saled_quantity">
-                                        已售<strong>183</strong>
-                                    </span>
-                            </div>
-                            <a class="comments clearfix" href="javascript:;">
-                                <span class="fr comments_link">100人评价</span>
-                                <span class="fr dark_stars">
-                                    <span class="fl bright_stars"></span>
-                                </span>
-                            </a>
-                        </div>
-                        <div class="item fl">
-                            <a class="image" href="javascript:;">
-                                <img src="images/bud.jpg" width="260" height="154">
-                                <span class="mark clearfix">
-                                    <span class="fl multi">多套餐</span>
-                                    <span class="fl no_booking">免预约</span>
-                                </span>
-                            </a>
-                            <a class="description"  href="javascript:;">
-                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
-                                <p>饮品6选1，精致美味，幸福滋味</p>
-                            </a>
-                            <div class="detail clearfix">
-                                    <span class="fl discount_price">
-                                        ¥<span>5.6</span>
-                                    </span>
-                                <span class="fl original_price">¥7</span>
-                                    <span class="fr saled_quantity">
-                                        已售<strong>183</strong>
-                                    </span>
-                            </div>
-                            <a class="comments clearfix" href="javascript:;">
-                                <span class="fr comments_link">100人评价</span>
-                                <span class="fr dark_stars">
-                                    <span class="fl bright_stars"></span>
-                                </span>
-                            </a>
-                        </div>
-                        <div class="item fl">
-                            <a class="image" href="javascript:;">
-                                <img src="images/bud.jpg" width="260" height="154">
-                                <span class="mark clearfix">
-                                    <span class="fl multi">多套餐</span>
-                                    <span class="fl no_booking">免预约</span>
-                                </span>
-                            </a>
-                            <a class="description"  href="javascript:;">
-                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
-                                <p>饮品6选1，精致美味，幸福滋味</p>
-                            </a>
-                            <div class="detail clearfix">
-                                    <span class="fl discount_price">
-                                        ¥<span>5.6</span>
-                                    </span>
-                                <span class="fl original_price">¥7</span>
-                                    <span class="fr saled_quantity">
-                                        已售<strong>183</strong>
-                                    </span>
-                            </div>
-                            <a class="comments clearfix" href="javascript:;">
-                                <span class="fr comments_link">100人评价</span>
-                                <span class="fr dark_stars">
-                                    <span class="fl bright_stars"></span>
-                                </span>
-                            </a>
-                        </div>
-                        <div class="item fl">
-                            <a class="image" href="javascript:;">
-                                <img src="images/bud.jpg" width="260" height="154">
-                                <span class="mark clearfix">
-                                    <span class="fl multi">多套餐</span>
-                                    <span class="fl no_booking">免预约</span>
-                                </span>
-                            </a>
-                            <a class="description"  href="javascript:;">
-                                <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
-                                <p>饮品6选1，精致美味，幸福滋味</p>
-                            </a>
-                            <div class="detail clearfix">
-                                    <span class="fl discount_price">
-                                        ¥<span>5.6</span>
-                                    </span>
-                                <span class="fl original_price">¥7</span>
-                                    <span class="fr saled_quantity">
-                                        已售<strong>183</strong>
-                                    </span>
-                            </div>
-                            <a class="comments clearfix" href="javascript:;">
-                                <span class="fr comments_link">100人评价</span>
-                                <span class="fr dark_stars">
-                                    <span class="fl bright_stars"></span>
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="more_link">
-                        <a href="javascript:;">
-                            更多美食团购，请点击查看
-                            <i class="F-glob F-glob-caret-right-small"></i>
-                        </a>
-                    </div>
+                    <div class="w_gs_bg fl"></div>
+                    <p class="w_price fl"><span>￥</span>17</p>
+                    <i class="w_allow_rl"></i>
+                </div>
             </div>
-            <div class="general_template entertainment">
-                <div class="top clearfix">
-                    <a class="fl title" href="javascript:;"><h3><span class="fl"></span>休闲娱乐</h3></a>
-                    <div class="fr nav clearfix">
-                        <a class="fl" href="javascript:;">游泳/水上乐园</a>
-                        <a class="fl" href="javascript:;">运动健身</a>
-                        <a class="fl" href="javascript:;">足疗按摩</a>
-                        <a class="fl all" href="javascript:;">全部</a>
+            <div class="w_goods_box fl">
+                <a href="#" class="w_two">
+                    <img src="img/img_01.jpg" alt="" title=""/>
+                </a>
+                <div class="w_gs_font_bx w_wid  clearfix">
+                    <div class="w_font_box fl ">
+                        <p class="tit">
+                            巴黎贝甜
+                        </p>
+                        <p class="w_gs_ft">
+                            代金卷1张，可叠加使用，藏在面包里的美味...
+                        </p>
                     </div>
+                    <div class="w_gs_bg fl"></div>
+                    <p class="w_price fl w_wid_01"><span>￥</span>17</p>
+                    <i class="w_allow_lt"></i>
                 </div>
-                <div class="item_list clearfix">
-                    <div class="item fl">
-                        <a class="image" href="javascript:;">
-                            <img src="images/bud.jpg" width="260" height="154">
-                                <span class="mark clearfix">
-                                    <span class="fl multi">多套餐</span>
-                                    <span class="fl no_booking">免预约</span>
-                                </span>
-                        </a>
-                        <a class="description"  href="javascript:;">
-                            <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
-                            <p>饮品6选1，精致美味，幸福滋味</p>
-                        </a>
-                        <div class="detail clearfix">
-                                    <span class="fl discount_price">
-                                        ¥<span>5.6</span>
-                                    </span>
-                            <span class="fl original_price">¥7</span>
-                                    <span class="fr saled_quantity">
-                                        已售<strong>183</strong>
-                                    </span>
-                        </div>
-                        <a class="comments clearfix" href="javascript:;">
-                            <span class="fr comments_link">100人评价</span>
-                                <span class="fr dark_stars">
-                                    <span class="fl bright_stars"></span>
-                                </span>
-                        </a>
+            </div>
+        </div>
+
+        <div class="w_goods_ct clearfix">
+            <div class="w_goods_box fl">
+                <a href="#">
+                    <img src="img/img_05.jpg" alt="" title=""/>
+                </a>
+                <div class="w_gs_font_bx clearfix">
+                    <div class="w_font_box fl">
+                        <p class="tit">
+                            巴黎贝甜
+                        </p>
+                        <p class="w_gs_ft">
+                            代金卷1张，可叠加使用，藏在面包里的美味...
+                        </p>
                     </div>
-                    <div class="item fl">
-                        <a class="image" href="javascript:;">
-                            <img src="images/bud.jpg" width="260" height="154">
-                                <span class="mark clearfix">
-                                    <span class="fl multi">多套餐</span>
-                                    <span class="fl no_booking">免预约</span>
-                                </span>
-                        </a>
-                        <a class="description"  href="javascript:;">
-                            <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
-                            <p>饮品6选1，精致美味，幸福滋味</p>
-                        </a>
-                        <div class="detail clearfix">
-                                    <span class="fl discount_price">
-                                        ¥<span>5.6</span>
-                                    </span>
-                            <span class="fl original_price">¥7</span>
-                                    <span class="fr saled_quantity">
-                                        已售<strong>183</strong>
-                                    </span>
-                        </div>
-                        <a class="comments clearfix" href="javascript:;">
-                            <span class="fr comments_link">100人评价</span>
-                                <span class="fr dark_stars">
-                                    <span class="fl bright_stars"></span>
-                                </span>
-                        </a>
-                    </div>
-                    <div class="item fl">
-                        <a class="image" href="javascript:;">
-                            <img src="images/bud.jpg" width="260" height="154">
-                                <span class="mark clearfix">
-                                    <span class="fl multi">多套餐</span>
-                                    <span class="fl no_booking">免预约</span>
-                                </span>
-                        </a>
-                        <a class="description"  href="javascript:;">
-                            <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
-                            <p>饮品6选1，精致美味，幸福滋味</p>
-                        </a>
-                        <div class="detail clearfix">
-                                    <span class="fl discount_price">
-                                        ¥<span>5.6</span>
-                                    </span>
-                            <span class="fl original_price">¥7</span>
-                                    <span class="fr saled_quantity">
-                                        已售<strong>183</strong>
-                                    </span>
-                        </div>
-                        <a class="comments clearfix" href="javascript:;">
-                            <span class="fr comments_link">100人评价</span>
-                                <span class="fr dark_stars">
-                                    <span class="fl bright_stars"></span>
-                                </span>
-                        </a>
-                    </div>
-                    <div class="item fl">
-                        <a class="image" href="javascript:;">
-                            <img src="images/bud.jpg" width="260" height="154">
-                                <span class="mark clearfix">
-                                    <span class="fl multi">多套餐</span>
-                                    <span class="fl no_booking">免预约</span>
-                                </span>
-                        </a>
-                        <a class="description"  href="javascript:;">
-                            <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
-                            <p>饮品6选1，精致美味，幸福滋味</p>
-                        </a>
-                        <div class="detail clearfix">
-                                    <span class="fl discount_price">
-                                        ¥<span>5.6</span>
-                                    </span>
-                            <span class="fl original_price">¥7</span>
-                                    <span class="fr saled_quantity">
-                                        已售<strong>183</strong>
-                                    </span>
-                        </div>
-                        <a class="comments clearfix" href="javascript:;">
-                            <span class="fr comments_link">100人评价</span>
-                                <span class="fr dark_stars">
-                                    <span class="fl bright_stars"></span>
-                                </span>
-                        </a>
-                    </div>
-                    <div class="item fl">
-                        <a class="image" href="javascript:;">
-                            <img src="images/bud.jpg" width="260" height="154">
-                                <span class="mark clearfix">
-                                    <span class="fl multi">多套餐</span>
-                                    <span class="fl no_booking">免预约</span>
-                                </span>
-                        </a>
-                        <a class="description"  href="javascript:;">
-                            <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
-                            <p>饮品6选1，精致美味，幸福滋味</p>
-                        </a>
-                        <div class="detail clearfix">
-                                    <span class="fl discount_price">
-                                        ¥<span>5.6</span>
-                                    </span>
-                            <span class="fl original_price">¥7</span>
-                                    <span class="fr saled_quantity">
-                                        已售<strong>183</strong>
-                                    </span>
-                        </div>
-                        <a class="comments clearfix" href="javascript:;">
-                            <span class="fr comments_link">100人评价</span>
-                                <span class="fr dark_stars">
-                                    <span class="fl bright_stars"></span>
-                                </span>
-                        </a>
-                    </div>
-                    <div class="item fl">
-                        <a class="image" href="javascript:;">
-                            <img src="images/bud.jpg" width="260" height="154">
-                                <span class="mark clearfix">
-                                    <span class="fl multi">多套餐</span>
-                                    <span class="fl no_booking">免预约</span>
-                                </span>
-                        </a>
-                        <a class="description"  href="javascript:;">
-                            <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
-                            <p>饮品6选1，精致美味，幸福滋味</p>
-                        </a>
-                        <div class="detail clearfix">
-                                    <span class="fl discount_price">
-                                        ¥<span>5.6</span>
-                                    </span>
-                            <span class="fl original_price">¥7</span>
-                                    <span class="fr saled_quantity">
-                                        已售<strong>183</strong>
-                                    </span>
-                        </div>
-                        <a class="comments clearfix" href="javascript:;">
-                            <span class="fr comments_link">100人评价</span>
-                                <span class="fr dark_stars">
-                                    <span class="fl bright_stars"></span>
-                                </span>
-                        </a>
-                    </div>
-                    <div class="item fl">
-                        <a class="image" href="javascript:;">
-                            <img src="images/bud.jpg" width="260" height="154">
-                                <span class="mark clearfix">
-                                    <span class="fl multi">多套餐</span>
-                                    <span class="fl no_booking">免预约</span>
-                                </span>
-                        </a>
-                        <a class="description"  href="javascript:;">
-                            <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
-                            <p>饮品6选1，精致美味，幸福滋味</p>
-                        </a>
-                        <div class="detail clearfix">
-                                    <span class="fl discount_price">
-                                        ¥<span>5.6</span>
-                                    </span>
-                            <span class="fl original_price">¥7</span>
-                                    <span class="fr saled_quantity">
-                                        已售<strong>183</strong>
-                                    </span>
-                        </div>
-                        <a class="comments clearfix" href="javascript:;">
-                            <span class="fr comments_link">100人评价</span>
-                                <span class="fr dark_stars">
-                                    <span class="fl bright_stars"></span>
-                                </span>
-                        </a>
-                    </div>
-                    <div class="item fl">
-                        <a class="image" href="javascript:;">
-                            <img src="images/bud.jpg" width="260" height="154">
-                                <span class="mark clearfix">
-                                    <span class="fl multi">多套餐</span>
-                                    <span class="fl no_booking">免预约</span>
-                                </span>
-                        </a>
-                        <a class="description"  href="javascript:;">
-                            <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
-                            <p>饮品6选1，精致美味，幸福滋味</p>
-                        </a>
-                        <div class="detail clearfix">
-                                    <span class="fl discount_price">
-                                        ¥<span>5.6</span>
-                                    </span>
-                            <span class="fl original_price">¥7</span>
-                                    <span class="fr saled_quantity">
-                                        已售<strong>183</strong>
-                                    </span>
-                        </div>
-                        <a class="comments clearfix" href="javascript:;">
-                            <span class="fr comments_link">100人评价</span>
-                                <span class="fr dark_stars">
-                                    <span class="fl bright_stars"></span>
-                                </span>
-                        </a>
-                    </div>
-                    <div class="item fl">
-                        <a class="image" href="javascript:;">
-                            <img src="images/bud.jpg" width="260" height="154">
-                                <span class="mark clearfix">
-                                    <span class="fl multi">多套餐</span>
-                                    <span class="fl no_booking">免预约</span>
-                                </span>
-                        </a>
-                        <a class="description"  href="javascript:;">
-                            <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
-                            <p>饮品6选1，精致美味，幸福滋味</p>
-                        </a>
-                        <div class="detail clearfix">
-                                    <span class="fl discount_price">
-                                        ¥<span>5.6</span>
-                                    </span>
-                            <span class="fl original_price">¥7</span>
-                                    <span class="fr saled_quantity">
-                                        已售<strong>183</strong>
-                                    </span>
-                        </div>
-                        <a class="comments clearfix" href="javascript:;">
-                            <span class="fr comments_link">100人评价</span>
-                                <span class="fr dark_stars">
-                                    <span class="fl bright_stars"></span>
-                                </span>
-                        </a>
-                    </div>
-                    <div class="item fl">
-                        <a class="image" href="javascript:;">
-                            <img src="images/bud.jpg" width="260" height="154">
-                                <span class="mark clearfix">
-                                    <span class="fl multi">多套餐</span>
-                                    <span class="fl no_booking">免预约</span>
-                                </span>
-                        </a>
-                        <a class="description"  href="javascript:;">
-                            <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
-                            <p>饮品6选1，精致美味，幸福滋味</p>
-                        </a>
-                        <div class="detail clearfix">
-                                    <span class="fl discount_price">
-                                        ¥<span>5.6</span>
-                                    </span>
-                            <span class="fl original_price">¥7</span>
-                                    <span class="fr saled_quantity">
-                                        已售<strong>183</strong>
-                                    </span>
-                        </div>
-                        <a class="comments clearfix" href="javascript:;">
-                            <span class="fr comments_link">100人评价</span>
-                                <span class="fr dark_stars">
-                                    <span class="fl bright_stars"></span>
-                                </span>
-                        </a>
-                    </div>
-                    <div class="item fl">
-                        <a class="image" href="javascript:;">
-                            <img src="images/bud.jpg" width="260" height="154">
-                                <span class="mark clearfix">
-                                    <span class="fl multi">多套餐</span>
-                                    <span class="fl no_booking">免预约</span>
-                                </span>
-                        </a>
-                        <a class="description"  href="javascript:;">
-                            <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
-                            <p>饮品6选1，精致美味，幸福滋味</p>
-                        </a>
-                        <div class="detail clearfix">
-                                    <span class="fl discount_price">
-                                        ¥<span>5.6</span>
-                                    </span>
-                            <span class="fl original_price">¥7</span>
-                                    <span class="fr saled_quantity">
-                                        已售<strong>183</strong>
-                                    </span>
-                        </div>
-                        <a class="comments clearfix" href="javascript:;">
-                            <span class="fr comments_link">100人评价</span>
-                                <span class="fr dark_stars">
-                                    <span class="fl bright_stars"></span>
-                                </span>
-                        </a>
-                    </div>
-                    <div class="item fl">
-                        <a class="image" href="javascript:;">
-                            <img src="images/bud.jpg" width="260" height="154">
-                                <span class="mark clearfix">
-                                    <span class="fl multi">多套餐</span>
-                                    <span class="fl no_booking">免预约</span>
-                                </span>
-                        </a>
-                        <a class="description"  href="javascript:;">
-                            <h3>【万源城/东兰路】阿姨奶茶-淘最上海</h3>
-                            <p>饮品6选1，精致美味，幸福滋味</p>
-                        </a>
-                        <div class="detail clearfix">
-                                    <span class="fl discount_price">
-                                        ¥<span>5.6</span>
-                                    </span>
-                            <span class="fl original_price">¥7</span>
-                                    <span class="fr saled_quantity">
-                                        已售<strong>183</strong>
-                                    </span>
-                        </div>
-                        <a class="comments clearfix" href="javascript:;">
-                            <span class="fr comments_link">100人评价</span>
-                                <span class="fr dark_stars">
-                                    <span class="fl bright_stars"></span>
-                                </span>
-                        </a>
-                    </div>
+                    <div class="w_gs_bg fl"></div>
+                    <p class="w_price fl"><span>￥</span>17</p>
+                    <i class="w_allow_rl"></i>
                 </div>
-                <div class="more_link">
-                    <a href="javascript:;">
-                        更多休闲娱乐团购，请点击查看
-                        <i class="F-glob F-glob-caret-right-small"></i>
-                    </a>
+            </div>
+            <div class="w_goods_box fl">
+                <a href="#" class="w_two">
+                    <img src="img/img_05.jpg" alt="" title=""/>
+                </a>
+                <div class="w_gs_font_bx w_wid  clearfix">
+                    <div class="w_font_box fl ">
+                        <p class="tit">
+                            巴黎贝甜
+                        </p>
+                        <p class="w_gs_ft">
+                            代金卷1张，可叠加使用，藏在面包里的美味...
+                        </p>
+                    </div>
+                    <div class="w_gs_bg fl"></div>
+                    <p class="w_price fl w_wid_01"><span>￥</span>17</p>
+                    <i class="w_allow_lt"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="w_goods_ct clearfix">
+            <div class="w_goods_box fl">
+                <a href="#">
+                    <img src="img/img_01.jpg" alt="" title=""/>
+                </a>
+                <div class="w_gs_font_bx clearfix">
+                    <div class="w_font_box fl">
+                        <p class="tit">
+                            巴黎贝甜
+                        </p>
+                        <p class="w_gs_ft">
+                            代金卷1张，可叠加使用，藏在面包里的美味...
+                        </p>
+                    </div>
+                    <div class="w_gs_bg fl"></div>
+                    <p class="w_price fl"><span>￥</span>17</p>
+                    <i class="w_allow_rl"></i>
+                </div>
+            </div>
+            <div class="w_goods_box fl">
+                <a href="#" class="w_two">
+                    <img src="img/img_01.jpg" alt="" title=""/>
+                </a>
+                <div class="w_gs_font_bx w_wid  clearfix">
+                    <div class="w_font_box fl ">
+                        <p class="tit">
+                            巴黎贝甜
+                        </p>
+                        <p class="w_gs_ft">
+                            代金卷1张，可叠加使用，藏在面包里的美味...
+                        </p>
+                    </div>
+                    <div class="w_gs_bg fl"></div>
+                    <p class="w_price fl w_wid_01"><span>￥</span>17</p>
+                    <i class="w_allow_lt"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="w_goods_ct clearfix">
+            <div class="w_goods_box fl">
+                <a href="#">
+                    <img src="img/img_01.jpg" alt="" title=""/>
+                </a>
+                <div class="w_gs_font_bx clearfix">
+                    <div class="w_font_box fl">
+                        <p class="tit">
+                            巴黎贝甜
+                        </p>
+                        <p class="w_gs_ft">
+                            代金卷1张，可叠加使用，藏在面包里的美味...
+                        </p>
+                    </div>
+                    <div class="w_gs_bg fl"></div>
+                    <p class="w_price fl"><span>￥</span>17</p>
+                    <i class="w_allow_rl"></i>
+                </div>
+            </div>
+            <div class="w_goods_box fl">
+                <a href="#" class="w_two">
+                    <img src="img/img_01.jpg" alt="" title=""/>
+                </a>
+                <div class="w_gs_font_bx w_wid  clearfix">
+                    <div class="w_font_box fl ">
+                        <p class="tit">
+                            巴黎贝甜
+                        </p>
+                        <p class="w_gs_ft">
+                            代金卷1张，可叠加使用，藏在面包里的美味...
+                        </p>
+                    </div>
+                    <div class="w_gs_bg fl"></div>
+                    <p class="w_price fl w_wid_01"><span>￥</span>17</p>
+                    <i class="w_allow_lt"></i>
+                </div>
+            </div>
+        </div>
+
+</div>
+    <div class="w_mm_container fl">
+        <div class="w_mm">
+            <h3 class="fl">
+                <a href="#"></a>
+            </h3>
+            <a class="fr">更多</a>
+        </div>
+        <div class="w_pic_box">
+            <div class="w_pic">
+                <img src="img/img_02.jpg">
+                <div class="w_pic_btn clearfix">
+                    <a href="#" class="active"></a>
+                    <a href="#"></a>
+                    <a href="#"></a>
+                </div>
+            </div>
+            <ul class="w_pic_ft">
+                <li>
+                    <a href="#">《闺蜜》观影礼包<i>进行中</i></a>
+                </li>
+                <li>
+                    <a href="#">《闺蜜》观影礼包<i>进行中</i></a>
+                </li>
+                <li>
+                    <a href="#">《闺蜜》观影礼包<i>进行中</i></a>
+                </li>
+            </ul>
+            <div class="w_pic_01">
+                <img src="img/img_03.jpg">
+                <div class="w_pic_btn clearfix">
+                    <a href="#" class="active"></a>
+                    <a href="#"></a>
+                    <a href="#"></a>
                 </div>
             </div>
         </div>
     </div>
-    <div class="footer_wrapper">
-        <div class="top">
-            <div class="bottom_links clearfix">
-                <a class="fl active" href="javascript:;">团购分类</a>
-                <a class="fl" href="javascript:;">热门地标</a>
-                <a class="fl" href="javascript:;">热门团购</a>
-                <a class="fl" href="javascript:;">精品推荐</a>
-                <a class="fl" href="javascript:;">历史团购</a>
-                <a class="fl" href="javascript:;">热门城市</a>
-                <a class="fl" href="javascript:;">周边城市</a>
-                <a class="fl" href="javascript:;">美团推荐</a>
+</div>
+<div class="w_wrapper padd_top clearfix">
+    <div class="w_md_goods_box fl">
+        <div class="md_tit clearfix">
+            <h3 class="fl">
+                <a href="#"></a>
+            </h3>
+            <div class="w_tinme_d fl">
+                <span>距开始</span><i>02</i><em>:</em><i>01</i><em>:</em><i>15</i>
             </div>
-            <div class="other_bottom_links clearfix">
-                <a class="fl active" href="javascript:;">美食团购</a>
-                <a class="fl" href="javascript:;">电影团购</a>
-                <a class="fl" href="javascript:;">休闲娱乐团购</a>
-                <a class="fl" href="javascript:;">旅游团购</a>
-                <a class="fl" href="javascript:;">生活服务团购</a>
-                <a class="fl" href="javascript:;">购物团购</a>
-                <a class="fl" href="javascript:;">丽人团购</a>
-                <a class="fl" href="javascript:;">团购评论</a>
-                <a class="fl" href="javascript:;">品牌团购</a>
-                <a class="fl" href="javascript:;">专题团购</a>
+            <a href="#" class="fr all_price">全部特价&gt;</a>
+        </div>
+        <ul class="w_md_goods clearfix">
+            <li>
+                <a href="#">
+                    <img src="img/img_04.jpg" alt="" title="" />
+                </a>
+                <p class="w_md_font">
+                    2人餐，滋味鲜美。邀您品鉴
+                </p>
+                <p class="w_md_price clearfix">
+                    <span class="fl">￥138</span><i class="fl">手机购买立减￥20</i>
+                </p>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="img/img_04.jpg" alt="" title="" />
+                </a>
+                <p class="w_md_font">
+                    2人餐，滋味鲜美。邀您品鉴
+                </p>
+                <p class="w_md_price clearfix">
+                    <span class="fl">￥138</span><i class="fl">手机购买立减￥20</i>
+                </p>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="img/img_04.jpg" alt="" title="" />
+                </a>
+                <p class="w_md_font">
+                    2人餐，滋味鲜美。邀您品鉴
+                </p>
+                <p class="w_md_price clearfix">
+                    <span class="fl">￥138</span><i class="fl">手机购买立减￥20</i>
+                </p>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="img/img_04.jpg" alt="" title="" />
+                </a>
+                <p class="w_md_font">
+                    2人餐，滋味鲜美。邀您品鉴
+                </p>
+                <p class="w_md_price clearfix">
+                    <span class="fl">￥138</span><i class="fl">手机购买立减￥20</i>
+                </p>
+            </li>
+        </ul>
+    </div>
+    <div class="fr free_down_box">
+        <ul>
+            <li class="clearfix">
+                <i class="w_mt fl"></i>
+                <div class="w_mt_ft_box fl">
+                    <p class="w_mt_tit">
+                        美团手机版
+                    </p>
+                    <a class="w_mt_font clearfix"><em class="fl">免费下载</em><b class="fl"></b></a>
+                </div>
+            </li>
+            <li class="clearfix">
+                <i class="w_my fl"></i>
+                <div class="w_mt_ft_box fl">
+                    <p class="w_mt_tit">
+                        美团手机版
+                    </p>
+                    <a class="w_mt_font w_my_font clearfix"><em class="fl">免费下载</em><b class="fl"></b></a>
+                </div>
+            </li>
+            <li class="clearfix w_clear_bt">
+                <i class="w_wm fl"></i>
+                <div class="w_mt_ft_box fl">
+                    <p class="w_mt_tit">
+                        美团手机版
+                    </p>
+                    <a class="w_mt_font w_wm_font clearfix"><em class="fl">免费下载</em><b class="fl"></b></a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<!--李忠达-->
+
+<div class="pz">
+    <div class="pz1 clearfix">
+        <i class="pz2"></i>
+        <h3 class="pz3">美食</h3>
+        <ul class="pz4">
+            <li class="pz5">
+                <a href="#">自助餐</a>
+                <p>|</p>
+            </li>
+            <li class="pz5">
+                <a href="#">火锅</a>
+                <p>|</p>
+            </li>
+            <li class="pz5">
+                <a href="#">烧烤烤肉</a>
+                <p>|</p>
+            </li>
+            <li class="pz5">
+                <a href="#">香锅烤鱼</a>
+                <p>|</p>
+            </li>
+            <li class="pz5">
+                <a href="#">西餐</a>
+                <p>|</p>
+            </li>
+            <li class="pz5">
+                <a href="#">蛋糕</a>
+            </li>
+            <li class="pz5">
+                <a href="#" class="pz6">全部
+                    <i class="pz7"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+       <div class="dj11 clearfix">
+        <ul class="dj clearfix">
+            <li class="dj1">
+                <a href="#"><img src="img/1.jpg"/></a>
+                <i class="dj2"></i>
+                <h3 class="dj3">【北京】西贝筱面村《舌尖2》品鉴
+                    <p class="dj4">西贝邀您评鉴《舌尖上的中国2》张爷爷手工空心挂面</p>
+                    <p class="dj5"><span class="dj6">￥</span>0<span class="dj7">门店价-</span></p>
+                </h3>
+                <div class="dj8">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/1.jpg"/></a>
+                <i class="dj2"></i>
+                <h3 class="dj3">【北京】西贝筱面村《舌尖2》品鉴
+                    <p class="dj4">西贝邀您评鉴《舌尖上的中国2》张爷爷手工空心挂面</p>
+                    <p class="dj5"><span class="dj6">￥</span>0<span class="dj7">门店价-</span></p>
+                </h3>
+                <div class="dj8">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/1.jpg"/></a>
+                <i class="dj2"></i>
+                <h3 class="dj3">【北京】西贝筱面村《舌尖2》品鉴
+                    <p class="dj4">西贝邀您评鉴《舌尖上的中国2》张爷爷手工空心挂面</p>
+                    <p class="dj5"><span class="dj6">￥</span>0<span class="dj7">门店价-</span></p>
+                </h3>
+                <div class="dj8">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/2.jpg"/></a>
+                <i class="dj2"></i>
+                <h3 class="dj3">【北京】西贝筱面村《舌尖2》品鉴
+                    <p class="dj4">西贝邀您评鉴《舌尖上的中国2》张爷爷手工空心挂面</p>
+                    <p class="dj5"><span class="dj6">￥</span>0<span class="dj7">门店价-</span></p>
+                </h3>
+                <div class="dj8">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/1.jpg"/></a>
+                <i class="dj2"></i>
+                <h3 class="dj3">【北京】西贝筱面村《舌尖2》品鉴
+                    <p class="dj4">西贝邀您评鉴《舌尖上的中国2》张爷爷手工空心挂面</p>
+                    <p class="dj5"><span class="dj6">￥</span>0<span class="dj7">门店价-</span></p>
+                </h3>
+                <div class="dj8">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/1.jpg"/></a>
+                <i class="dj2"></i>
+                <h3 class="dj3">【北京】西贝筱面村《舌尖2》品鉴
+                    <p class="dj4">西贝邀您评鉴《舌尖上的中国2》张爷爷手工空心挂面</p>
+                    <p class="dj5"><span class="dj6">￥</span>0<span class="dj7">门店价-</span></p>
+                </h3>
+                <div class="dj8">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/1.jpg"/></a>
+                <i class="dj2"></i>
+                <h3 class="dj3">【北京】西贝筱面村《舌尖2》品鉴
+                    <p class="dj4">西贝邀您评鉴《舌尖上的中国2》张爷爷手工空心挂面</p>
+                    <p class="dj5"><span class="dj6">￥</span>0<span class="dj7">门店价-</span></p>
+                </h3>
+                <div class="dj8">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/1.jpg"/></a>
+                <i class="dj2"></i>
+                <h3 class="dj3">【北京】西贝筱面村《舌尖2》品鉴
+                    <p class="dj4">西贝邀您评鉴《舌尖上的中国2》张爷爷手工空心挂面</p>
+                    <p class="dj5"><span class="dj6">￥</span>0<span class="dj7">门店价-</span></p>
+                </h3>
+                <div class="dj8">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/1.jpg"/></a>
+                <i class="dj2"></i>
+                <h3 class="dj3">【北京】西贝筱面村《舌尖2》品鉴
+                    <p class="dj4">西贝邀您评鉴《舌尖上的中国2》张爷爷手工空心挂面</p>
+                    <p class="dj5"><span class="dj6">￥</span>0<span class="dj7">门店价-</span></p>
+                </h3>
+                <div class="dj8">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/1.jpg"/></a>
+                <i class="dj2"></i>
+                <h3 class="dj3">【北京】西贝筱面村《舌尖2》品鉴
+                    <p class="dj4">西贝邀您评鉴《舌尖上的中国2》张爷爷手工空心挂面</p>
+                    <p class="dj5"><span class="dj6">￥</span>0<span class="dj7">门店价-</span></p>
+                </h3>
+                <div class="dj8">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/1.jpg"/></a>
+                <i class="dj2"></i>
+                <h3 class="dj3">【北京】西贝筱面村《舌尖2》品鉴
+                    <p class="dj4">西贝邀您评鉴《舌尖上的中国2》张爷爷手工空心挂面</p>
+                    <p class="dj5"><span class="dj6">￥</span>0<span class="dj7">门店价-</span></p>
+                </h3>
+                <div class="dj8">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/1.jpg"/></a>
+                <i class="dj2"></i>
+                <h3 class="dj3">【北京】西贝筱面村《舌尖2》品鉴
+                    <p class="dj4">西贝邀您评鉴《舌尖上的中国2》张爷爷手工空心挂面</p>
+                    <p class="dj5"><span class="dj6">￥</span>0<span class="dj7">门店价-</span></p>
+                </h3>
+                <div class="dj8">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/1.jpg"/></a>
+                <i class="dj2"></i>
+                <h3 class="dj3">【北京】西贝筱面村《舌尖2》品鉴
+                    <p class="dj4">西贝邀您评鉴《舌尖上的中国2》张爷爷手工空心挂面</p>
+                    <p class="dj5"><span class="dj6">￥</span>0<span class="dj7">门店价-</span></p>
+                </h3>
+                <div class="dj8">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/1.jpg"/></a>
+                <i class="dj2"></i>
+                <h3 class="dj3">【北京】西贝筱面村《舌尖2》品鉴
+                    <p class="dj4">西贝邀您评鉴《舌尖上的中国2》张爷爷手工空心挂面</p>
+                    <p class="dj5"><span class="dj6">￥</span>0<span class="dj7">门店价-</span></p>
+                </h3>
+                <div class="dj8">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/1.jpg"/></a>
+                <i class="dj2"></i>
+                <h3 class="dj3">【北京】西贝筱面村《舌尖2》品鉴
+                    <p class="dj4">西贝邀您评鉴《舌尖上的中国2》张爷爷手工空心挂面</p>
+                    <p class="dj5"><span class="dj6">￥</span>0<span class="dj7">门店价-</span></p>
+                </h3>
+                <div class="dj8">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/1.jpg"/></a>
+                <i class="dj2"></i>
+                <h3 class="dj3">【北京】西贝筱面村《舌尖2》品鉴
+                    <p class="dj4">西贝邀您评鉴《舌尖上的中国2》张爷爷手工空心挂面</p>
+                    <p class="dj5"><span class="dj6">￥</span>0<span class="dj7">门店价-</span></p>
+                </h3>
+                <div class="dj8">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/1.jpg"/></a>
+                <i class="dj2"></i>
+                <h3 class="dj3">【北京】西贝筱面村《舌尖2》品鉴
+                    <p class="dj4">西贝邀您评鉴《舌尖上的中国2》张爷爷手工空心挂面</p>
+                    <p class="dj5"><span class="dj6">￥</span>0<span class="dj7">门店价-</span></p>
+                </h3>
+                <div class="dj8">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/1.jpg"/></a>
+                <i class="dj2"></i>
+                <h3 class="dj3">【北京】西贝筱面村《舌尖2》品鉴
+                    <p class="dj4">西贝邀您评鉴《舌尖上的中国2》张爷爷手工空心挂面</p>
+                    <p class="dj5"><span class="dj6">￥</span>0<span class="dj7">门店价-</span></p>
+                </h3>
+                <!--<div class="dj8">-->
+                    <!--<p class="dj9">16832<span>人已参与</span></p>-->
+                    <!--<p class="dj10">暂无评价</p>-->
+                <!--</div>-->
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/1.jpg"/></a>
+                <i class="dj2"></i>
+                <h3 class="dj3">【北京】西贝筱面村《舌尖2》品鉴
+                    <p class="dj4">西贝邀您评鉴《舌尖上的中国2》张爷爷手工空心挂面</p>
+                    <p class="dj5"><span class="dj6">￥</span>0<span class="dj7">门店价-</span></p>
+                </h3>
+                <div class="dj8">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/1.jpg"/></a>
+                <i class="dj2"></i>
+                <h3 class="dj3">【北京】西贝筱面村《舌尖2》品鉴
+                    <p class="dj4">西贝邀您评鉴《舌尖上的中国2》张爷爷手工空心挂面</p>
+                    <p class="dj5"><span class="dj6">￥</span>0<span class="dj7">门店价-</span></p>
+                </h3>
+                <div class="dj8">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/1.jpg"/></a>
+                <i class="dj2"></i>
+                <h3 class="dj3">【北京】西贝筱面村《舌尖2》品鉴
+                    <p class="dj4">西贝邀您评鉴《舌尖上的中国2》张爷爷手工空心挂面</p>
+                    <p class="dj5"><span class="dj6">￥</span>0<span class="dj7">门店价-</span></p>
+                </h3>
+                <div class="dj8">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/1.jpg"/></a>
+                <i class="dj2"></i>
+                <h3 class="dj3">【北京】西贝筱面村《舌尖2》品鉴
+                    <p class="dj4">西贝邀您评鉴《舌尖上的中国2》张爷爷手工空心挂面</p>
+                    <p class="dj5"><span class="dj6">￥</span>0<span class="dj7">门店价-</span></p>
+                </h3>
+                <div class="dj8">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/1.jpg"/></a>
+                <i class="dj2"></i>
+                <h3 class="dj3">【北京】西贝筱面村《舌尖2》品鉴
+                    <p class="dj4">西贝邀您评鉴《舌尖上的中国2》张爷爷手工空心挂面</p>
+                    <p class="dj5"><span class="dj6">￥</span>0<span class="dj7">门店价-</span></p>
+                </h3>
+                <div class="dj8">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/1.jpg"/></a>
+                <i class="dj2"></i>
+                <h3 class="dj3">【北京】西贝筱面村《舌尖2》品鉴
+                    <p class="dj4">西贝邀您评鉴《舌尖上的中国2》张爷爷手工空心挂面</p>
+                    <p class="dj5"><span class="dj6">￥</span>0<span class="dj7">门店价-</span></p>
+                </h3>
+                <div class="dj8">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/1.jpg"/></a>
+                <i class="dj2"></i>
+                <h3 class="dj3">【北京】西贝筱面村《舌尖2》品鉴
+                    <p class="dj4">西贝邀您评鉴《舌尖上的中国2》张爷爷手工空心挂面</p>
+                    <p class="dj5"><span class="dj6">￥</span>0<span class="dj7">门店价-</span></p>
+                </h3>
+                <div class="dj8">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/1.jpg"/></a>
+                <i class="dj2"></i>
+                <h3 class="dj3">【北京】西贝筱面村《舌尖2》品鉴
+                    <p class="dj4">西贝邀您评鉴《舌尖上的中国2》张爷爷手工空心挂面</p>
+                    <p class="dj5"><span class="dj6">￥</span>0<span class="dj7">门店价-</span></p>
+                </h3>
+                <div class="dj8">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/1.jpg"/></a>
+                <i class="dj2"></i>
+                <h3 class="dj3">【北京】西贝筱面村《舌尖2》品鉴
+                    <p class="dj4">西贝邀您评鉴《舌尖上的中国2》张爷爷手工空心挂面</p>
+                    <p class="dj5"><span class="dj6">￥</span>0<span class="dj7">门店价-</span></p>
+                </h3>
+                <div class="dj8">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="gb clearfix">
+        <a href="#" class="gb1">更多美食团购，请点击查看</a>
+        <i class="gb2"></i>
+    </div>
+    <div class="pz1 clearfix">
+        <i class="gb3"></i>
+        <h3 class="pz3">休闲娱乐</h3>
+        <ul class="pz4">
+            <li class="pz5">
+                <a href="#">ktv</a>
+                <p>|</p>
+            </li>
+            <li class="pz5">
+                <a href="#">水上世界</a>
+                <p>|</p>
+            </li>
+            <li class="pz5">
+                <a href="#">水上乐园</a>
+                <p>|</p>
+            </li>
+            <li class="pz5">
+                <a href="#">运动健身</a>
+                <p>|</p>
+            </li>
+            <li class="pz5">
+                <a href="#">足疗按摩</a>
+            </li>
+            <li class="pz5">
+                <a href="#" class="pz6">全部
+                    <i class="pz7"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="dj11">
+        <ul class="dj clearfix">
+            <li class="dj1">
+                <a href="#"><img src="img/3.jpg"/></a>
+                <i class="gb4"></i>
+                <h3 class="dj3">【7店通用】康俊会馆
+                    <p class="dj4">感恩卡1张，全场通用，可叠加使用</p>
+                    <p class="dj5"><span class="dj6">￥</span>3000<span class="dj7">门店价</span><span class="gb5">￥6000</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/3.jpg"/></a>
+                <i class="gb4"></i>
+                <h3 class="dj3">【7店通用】康俊会馆
+                    <p class="dj4">感恩卡1张，全场通用，可叠加使用</p>
+                    <p class="dj5"><span class="dj6">￥</span>3000<span class="dj7">门店价</span><span class="gb5">￥6000</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/3.jpg"/></a>
+                <i class="gb4"></i>
+                <h3 class="dj3">【7店通用】康俊会馆
+                    <p class="dj4">感恩卡1张，全场通用，可叠加使用</p>
+                    <p class="dj5"><span class="dj6">￥</span>3000<span class="dj7">门店价</span><span class="gb5">￥6000</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/3.jpg"/></a>
+                <i class="gb4"></i>
+                <h3 class="dj3">【7店通用】康俊会馆
+                    <p class="dj4">感恩卡1张，全场通用，可叠加使用</p>
+                    <p class="dj5"><span class="dj6">￥</span>3000<span class="dj7">门店价</span><span class="gb5">￥6000</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/3.jpg"/></a>
+                <i class="gb4"></i>
+                <h3 class="dj3">【7店通用】康俊会馆
+                    <p class="dj4">感恩卡1张，全场通用，可叠加使用</p>
+                    <p class="dj5"><span class="dj6">￥</span>3000<span class="dj7">门店价</span><span class="gb5">￥6000</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/3.jpg"/></a>
+                <i class="gb4"></i>
+                <h3 class="dj3">【7店通用】康俊会馆
+                    <p class="dj4">感恩卡1张，全场通用，可叠加使用</p>
+                    <p class="dj5"><span class="dj6">￥</span>3000<span class="dj7">门店价</span><span class="gb5">￥6000</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/3.jpg"/></a>
+                <i class="gb4"></i>
+                <h3 class="dj3">【7店通用】康俊会馆
+                    <p class="dj4">感恩卡1张，全场通用，可叠加使用</p>
+                    <p class="dj5"><span class="dj6">￥</span>3000<span class="dj7">门店价</span><span class="gb5">￥6000</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/3.jpg"/></a>
+                <i class="gb4"></i>
+                <h3 class="dj3">【7店通用】康俊会馆
+                    <p class="dj4">感恩卡1张，全场通用，可叠加使用</p>
+                    <p class="dj5"><span class="dj6">￥</span>3000<span class="dj7">门店价</span><span class="gb5">￥6000</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/3.jpg"/></a>
+                <i class="gb4"></i>
+                <h3 class="dj3">【7店通用】康俊会馆
+                    <p class="dj4">感恩卡1张，全场通用，可叠加使用</p>
+                    <p class="dj5"><span class="dj6">￥</span>3000<span class="dj7">门店价</span><span class="gb5">￥6000</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/3.jpg"/></a>
+                <i class="gb4"></i>
+                <h3 class="dj3">【7店通用】康俊会馆
+                    <p class="dj4">感恩卡1张，全场通用，可叠加使用</p>
+                    <p class="dj5"><span class="dj6">￥</span>3000<span class="dj7">门店价</span><span class="gb5">￥6000</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/3.jpg"/></a>
+                <i class="gb4"></i>
+                <h3 class="dj3">【7店通用】康俊会馆
+                    <p class="dj4">感恩卡1张，全场通用，可叠加使用</p>
+                    <p class="dj5"><span class="dj6">￥</span>3000<span class="dj7">门店价</span><span class="gb5">￥6000</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/3.jpg"/></a>
+                <i class="gb4"></i>
+                <h3 class="dj3">【7店通用】康俊会馆
+                    <p class="dj4">感恩卡1张，全场通用，可叠加使用</p>
+                    <p class="dj5"><span class="dj6">￥</span>3000<span class="dj7">门店价</span><span class="gb5">￥6000</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="gb clearfix">
+        <a href="#" class="gb1">更多休闲娱乐团购，请点击查看</a>
+        <i class="gb2"></i>
+    </div>
+    <div class="pz1 clearfix">
+        <i class="logo1"></i>
+        <h3 class="pz3">电影</h3>
+        <ul class="pz4">
+
+            <li class="pz5">
+                <a href="#">电影票团购</a>
+                <p>|</p>
+            </li>
+            <li class="pz5">
+                <a href="#">电影院</a>
+                <p>|</p>
+            </li>
+            <li class="pz5">
+                <a href="#">在线选座</a>
+                <p>|</p>
+            </li>
+            <li class="pz5">
+                <a href="#">最新电影</a>
+            </li>
+
+            <li class="pz5">
+                <a href="#" class="pz6">全部
+                    <i class="pz7"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="dj11">
+        <ul class="dj clearfix">
+            <li class="dj1">
+                <a href="#"><img src="img/4.jpg"/></a>
+                <i class="gb4"></i>
+                <h3 class="dj3">【2店通用】cgv星星国际影城
+                    <p class="dj4">2D/3D电影票1张。可观看2D/3D</p>
+                    <p class="dj5"><span class="dj6">￥</span>36<span class="dj7">门店价</span><span class="gb5">￥100</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/4.jpg"/></a>
+                <i class="gb4"></i>
+                <h3 class="dj3">【2店通用】cgv星星国际影城
+                    <p class="dj4">2D/3D电影票1张。可观看2D/3D</p>
+                    <p class="dj5"><span class="dj6">￥</span>36<span class="dj7">门店价</span><span class="gb5">￥100</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/4.jpg"/></a>
+                <i class="gb4"></i>
+                <h3 class="dj3">【2店通用】cgv星星国际影城
+                    <p class="dj4">2D/3D电影票1张。可观看2D/3D</p>
+                    <p class="dj5"><span class="dj6">￥</span>36<span class="dj7">门店价</span><span class="gb5">￥100</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/4.jpg"/></a>
+                <i class="gb4"></i>
+                <h3 class="dj3">【2店通用】cgv星星国际影城
+                    <p class="dj4">2D/3D电影票1张。可观看2D/3D</p>
+                    <p class="dj5"><span class="dj6">￥</span>36<span class="dj7">门店价</span><span class="gb5">￥100</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/4.jpg"/></a>
+                <i class="gb4"></i>
+                <h3 class="dj3">【2店通用】cgv星星国际影城
+                    <p class="dj4">2D/3D电影票1张。可观看2D/3D</p>
+                    <p class="dj5"><span class="dj6">￥</span>36<span class="dj7">门店价</span><span class="gb5">￥100</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/4.jpg"/></a>
+                <i class="gb4"></i>
+                <h3 class="dj3">【2店通用】cgv星星国际影城
+                    <p class="dj4">2D/3D电影票1张。可观看2D/3D</p>
+                    <p class="dj5"><span class="dj6">￥</span>36<span class="dj7">门店价</span><span class="gb5">￥100</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="gb clearfix">
+        <a href="#" class="gb1">更多电影团购，请点击查看</a>
+        <i class="gb2"></i>
+    </div>
+    <div class="pz1 clearfix">
+        <i class="logo2"></i>
+        <h3 class="pz3">酒店</h3>
+        <ul class="pz4">
+
+            <li class="pz5">
+                <a href="#">经济型酒店</a>
+                <p>|</p>
+            </li>
+            <li class="pz5">
+                <a href="#">主题酒店</a>
+                <p>|</p>
+            </li>
+            <li class="pz5">
+                <a href="#">豪华酒店</a>
+                <p>|</p>
+            </li>
+            <li class="pz5">
+                <a href="#">钟点房</a>
+            </li>
+
+            <li class="pz5">
+                <a href="#" class="pz6">全部
+                    <i class="pz7"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="dj11">
+        <ul class="dj clearfix">
+            <li class="dj1">
+                <a href="#"><img src="img/5.jpg"/></a>
+                <i class="gb4"></i>
+                <h3 class="dj3">【小汤山镇】九华风吕
+                    <p class="dj4">两室一厅入住一晚，可连续入住</p>
+                    <p class="dj5"><span class="dj6">￥</span>1000<span class="dj7">门店价</span><span class="gb5">￥2200</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/5.jpg"/></a>
+                <i class="gb4"></i>
+                <h3 class="dj3">【小汤山镇】九华风吕
+                    <p class="dj4">两室一厅入住一晚，可连续入住</p>
+                    <p class="dj5"><span class="dj6">￥</span>1000<span class="dj7">门店价</span><span class="gb5">￥2200</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/5.jpg"/></a>
+                <i class="gb4"></i>
+                <h3 class="dj3">【小汤山镇】九华风吕
+                    <p class="dj4">两室一厅入住一晚，可连续入住</p>
+                    <p class="dj5"><span class="dj6">￥</span>1000<span class="dj7">门店价</span><span class="gb5">￥2200</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/5.jpg"/></a>
+                <i class="gb4"></i>
+                <h3 class="dj3">【小汤山镇】九华风吕
+                    <p class="dj4">两室一厅入住一晚，可连续入住</p>
+                    <p class="dj5"><span class="dj6">￥</span>1000<span class="dj7">门店价</span><span class="gb5">￥2200</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/5.jpg"/></a>
+                <i class="gb4"></i>
+                <h3 class="dj3">【小汤山镇】九华风吕
+                    <p class="dj4">两室一厅入住一晚，可连续入住</p>
+                    <p class="dj5"><span class="dj6">￥</span>1000<span class="dj7">门店价</span><span class="gb5">￥2200</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/5.jpg"/></a>
+                <i class="gb4"></i>
+                <h3 class="dj3">【小汤山镇】九华风吕
+                    <p class="dj4">两室一厅入住一晚，可连续入住</p>
+                    <p class="dj5"><span class="dj6">￥</span>1000<span class="dj7">门店价</span><span class="gb5">￥2200</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="gb clearfix">
+        <a href="#" class="gb1">更多酒店团购，请点击查看</a>
+        <i class="gb2"></i>
+    </div>
+    <div class="pz1 clearfix">
+        <i class="logo3"></i>
+        <h3 class="pz3">生活服务</h3>
+        <ul class="pz4">
+
+            <li class="pz5">
+                <a href="#">其他摄影</a>
+                <p>|</p>
+            </li>
+            <li class="pz5">
+                <a href="#">汽车服务</a>
+                <p>|</p>
+            </li>
+            <li class="pz5">
+                <a href="#">培训课程</a>
+                <p>|</p>
+            </li>
+            <li class="pz5">
+                <a href="#">母婴亲子</a>
+                <p>|</p>
+            </li>
+            <li class="pz5">
+                <a href="#">体检保健</a>
+                <p>|</p>
+            </li>
+            <li class="pz5">
+                <a href="#">配镜</a>
+
+            </li>
+
+            <li class="pz5">
+                <a href="#" class="pz6">全部
+                    <i class="pz7"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="dj11">
+        <ul class="dj clearfix">
+            <li class="dj1">
+                <a href="#"><img src="img/6.jpg"/></a>
+                <i class="hz1"></i>
+                <i class="hz2"></i>
+                <i class="hz3"></i>
+                <h3 class="dj3">【王府就/东单】金夫人婚纱摄影
+                    <p class="dj4">线上支付10%定金，5服5造</p>
+                    <p class="dj5"><span class="dj6">￥</span>699<span class="dj7">门店价</span><span class="gb5">￥6999</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/6.jpg"/></a>
+                <i class="hz1"></i>
+                <i class="hz2"></i>
+                <i class="hz3"></i>
+                <h3 class="dj3">【王府就/东单】金夫人婚纱摄影
+                    <p class="dj4">线上支付10%定金，5服5造</p>
+                    <p class="dj5"><span class="dj6">￥</span>699<span class="dj7">门店价</span><span class="gb5">￥6999</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/6.jpg"/></a>
+                <i class="hz1"></i>
+                <i class="hz2"></i>
+                <i class="hz3"></i>
+                <h3 class="dj3">【王府就/东单】金夫人婚纱摄影
+                    <p class="dj4">线上支付10%定金，5服5造</p>
+                    <p class="dj5"><span class="dj6">￥</span>699<span class="dj7">门店价</span><span class="gb5">￥6999</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/6.jpg"/></a>
+                <i class="hz1"></i>
+                <i class="hz2"></i>
+                <i class="hz3"></i>
+                <h3 class="dj3">【王府就/东单】金夫人婚纱摄影
+                    <p class="dj4">线上支付10%定金，5服5造</p>
+                    <p class="dj5"><span class="dj6">￥</span>699<span class="dj7">门店价</span><span class="gb5">￥6999</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/6.jpg"/></a>
+                <i class="hz1"></i>
+                <i class="hz2"></i>
+                <i class="hz3"></i>
+                <h3 class="dj3">【王府就/东单】金夫人婚纱摄影
+                    <p class="dj4">线上支付10%定金，5服5造</p>
+                    <p class="dj5"><span class="dj6">￥</span>699<span class="dj7">门店价</span><span class="gb5">￥6999</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/6.jpg"/></a>
+                <i class="hz1"></i>
+                <i class="hz2"></i>
+                <i class="hz3"></i>
+                <h3 class="dj3">【王府就/东单】金夫人婚纱摄影
+                    <p class="dj4">线上支付10%定金，5服5造</p>
+                    <p class="dj5"><span class="dj6">￥</span>699<span class="dj7">门店价</span><span class="gb5">￥6999</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="gb clearfix">
+        <a href="#" class="gb1">更多生活服务团购，请点击查看</a>
+        <i class="gb2"></i>
+    </div>
+    <div class="pz1 clearfix">
+        <i class="logo4"></i>
+        <h3 class="pz3">购物</h3>
+        <ul class="pz4">
+
+            <li class="pz5">
+                <a href="#">服装家居</a>
+                <p>|</p>
+            </li>
+            <li class="pz5">
+                <a href="#">家居日用</a>
+                <p>|</p>
+            </li>
+            <li class="pz5">
+                <a href="#">电器数码</a>
+                <p>|</p>
+            </li>
+            <li class="pz5">
+                <a href="#">鞋类箱包</a>
+                <p>|</p>
+            </li>
+            <li class="pz5">
+                <a href="#">饰品手表</a>
+                <p>|</p>
+            </li>
+            <li class="pz5">
+                <a href="#">食品</a>
+
+            </li>
+
+            <li class="pz5">
+                <a href="#" class="pz6">全部
+                    <i class="pz7"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="dj11">
+        <ul class="dj clearfix">
+            <li class="dj1">
+                <a href="#"><img src="img/7.jpg"/></a>
+                <i class="hz4"></i>
+
+                <h3 class="dj3">【包邮】百分爱金丝肉松饼
+                    <p class="dj4">百分爱金丝肉松饼，全国包邮</p>
+                    <p class="dj5"><span class="dj6">￥</span>58<span class="dj7">门店价</span><span class="gb5">￥98</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/7.jpg"/></a>
+                <i class="hz4"></i>
+
+                <h3 class="dj3">【包邮】百分爱金丝肉松饼
+                    <p class="dj4">百分爱金丝肉松饼，全国包邮</p>
+                    <p class="dj5"><span class="dj6">￥</span>58<span class="dj7">门店价</span><span class="gb5">￥98</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/7.jpg"/></a>
+                <i class="hz4"></i>
+
+                <h3 class="dj3">【包邮】百分爱金丝肉松饼
+                    <p class="dj4">百分爱金丝肉松饼，全国包邮</p>
+                    <p class="dj5"><span class="dj6">￥</span>58<span class="dj7">门店价</span><span class="gb5">￥98</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/7.jpg"/></a>
+                <i class="hz4"></i>
+
+                <h3 class="dj3">【包邮】百分爱金丝肉松饼
+                    <p class="dj4">百分爱金丝肉松饼，全国包邮</p>
+                    <p class="dj5"><span class="dj6">￥</span>58<span class="dj7">门店价</span><span class="gb5">￥98</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/7.jpg"/></a>
+                <i class="hz4"></i>
+
+                <h3 class="dj3">【包邮】百分爱金丝肉松饼
+                    <p class="dj4">百分爱金丝肉松饼，全国包邮</p>
+                    <p class="dj5"><span class="dj6">￥</span>58<span class="dj7">门店价</span><span class="gb5">￥98</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/7.jpg"/></a>
+                <i class="hz4"></i>
+
+                <h3 class="dj3">【包邮】百分爱金丝肉松饼
+                    <p class="dj4">百分爱金丝肉松饼，全国包邮</p>
+                    <p class="dj5"><span class="dj6">￥</span>58<span class="dj7">门店价</span><span class="gb5">￥98</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="gb clearfix">
+        <a href="#" class="gb1">更多购物团购，请点击查看</a>
+        <i class="gb2"></i>
+    </div>
+    <div class="pz1 clearfix">
+        <i class="logo5"></i>
+        <h3 class="pz3">丽人</h3>
+        <ul class="pz4">
+
+            <li class="pz5">
+                <a href="#">美发</a>
+                <p>|</p>
+            </li>
+            <li class="pz5">
+                <a href="#">美容美体</a>
+                <p>|</p>
+            </li>
+            <li class="pz5">
+                <a href="#">美甲</a>
+                <p>|</p>
+            </li>
+            <li class="pz5">
+                <a href="#">瑜伽舞蹈</a>
+
+
+            <li class="pz5">
+                <a href="#" class="pz6">全部
+                    <i class="pz7"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="dj11">
+        <ul class="dj clearfix">
+            <li class="dj1">
+                <a href="#"><img src="img/8.jpg"/></a>
+                <i class="hz1"></i>
+                <i class="hz2"></i>
+                <i class="hz3"></i>
+                <h3 class="dj3">【朝阳区】美丽宫造型
+                    <p class="dj4">理发（洗剪吹+设计造型）1次,男女不限</p>
+                    <p class="dj5"><span class="dj6">￥</span>58<span class="dj7">门店价</span><span class="gb5">￥120</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/8.jpg"/></a>
+                <i class="hz1"></i>
+                <i class="hz2"></i>
+                <i class="hz3"></i>
+                <h3 class="dj3">【朝阳区】美丽宫造型
+                    <p class="dj4">理发（洗剪吹+设计造型）1次,男女不限</p>
+                    <p class="dj5"><span class="dj6">￥</span>58<span class="dj7">门店价</span><span class="gb5">￥120</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/8.jpg"/></a>
+                <i class="hz1"></i>
+                <i class="hz2"></i>
+                <i class="hz3"></i>
+                <h3 class="dj3">【朝阳区】美丽宫造型
+                    <p class="dj4">理发（洗剪吹+设计造型）1次,男女不限</p>
+                    <p class="dj5"><span class="dj6">￥</span>58<span class="dj7">门店价</span><span class="gb5">￥120</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/8.jpg"/></a>
+                <i class="hz1"></i>
+                <i class="hz2"></i>
+                <i class="hz3"></i>
+                <h3 class="dj3">【朝阳区】美丽宫造型
+                    <p class="dj4">理发（洗剪吹+设计造型）1次,男女不限</p>
+                    <p class="dj5"><span class="dj6">￥</span>58<span class="dj7">门店价</span><span class="gb5">￥120</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/8.jpg"/></a>
+                <i class="hz1"></i>
+                <i class="hz2"></i>
+                <i class="hz3"></i>
+                <h3 class="dj3">【朝阳区】美丽宫造型
+                    <p class="dj4">理发（洗剪吹+设计造型）1次,男女不限</p>
+                    <p class="dj5"><span class="dj6">￥</span>58<span class="dj7">门店价</span><span class="gb5">￥120</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/8.jpg"/></a>
+                <i class="hz1"></i>
+                <i class="hz2"></i>
+                <i class="hz3"></i>
+                <h3 class="dj3">【朝阳区】美丽宫造型
+                    <p class="dj4">理发（洗剪吹+设计造型）1次,男女不限</p>
+                    <p class="dj5"><span class="dj6">￥</span>58<span class="dj7">门店价</span><span class="gb5">￥120</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="gb clearfix">
+        <a href="#" class="gb1">更多丽人团购，请点击查看</a>
+        <i class="gb2"></i>
+    </div>
+    <div class="pz1 clearfix">
+        <i class="logo6"></i>
+        <h3 class="pz3">旅游</h3>
+        <ul class="pz4">
+
+            <li class="pz5">
+                <a href="#">景点门票</a>
+                <p>|</p>
+            </li>
+            <li class="pz5">
+                <a href="#">本地/周边游</a>
+                <p>|</p>
+            </li>
+            <li class="pz5">
+                <a href="#">国内游</a>
+                <p>|</p>
+            </li>
+            <li class="pz5">
+                <a href="#">境外游</a>
+
+
+            <li class="pz5">
+                <a href="#" class="pz6">全部
+                    <i class="pz7"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="dj11">
+        <ul class="dj clearfix">
+            <li class="dj1">
+                <a href="#"><img src="img/9.jpg"/></a>
+                <i class="hz1"></i>
+                <h3 class="dj3">【朝阳区】蟹岛度假村
+                    <p class="dj4">单人野外烧烤1次，休闲体验，欢迎光临</p>
+                    <p class="dj5"><span class="dj6">￥</span>98<span class="dj7">门店价</span><span class="gb5">￥158</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/9.jpg"/></a>
+                <i class="hz1"></i>
+                <h3 class="dj3">【朝阳区】蟹岛度假村
+                    <p class="dj4">单人野外烧烤1次，休闲体验，欢迎光临</p>
+                    <p class="dj5"><span class="dj6">￥</span>98<span class="dj7">门店价</span><span class="gb5">￥158</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/9.jpg"/></a>
+                <i class="hz1"></i>
+                <h3 class="dj3">【朝阳区】蟹岛度假村
+                    <p class="dj4">单人野外烧烤1次，休闲体验，欢迎光临</p>
+                    <p class="dj5"><span class="dj6">￥</span>98<span class="dj7">门店价</span><span class="gb5">￥158</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/9.jpg"/></a>
+                <i class="hz1"></i>
+                <h3 class="dj3">【朝阳区】蟹岛度假村
+                    <p class="dj4">单人野外烧烤1次，休闲体验，欢迎光临</p>
+                    <p class="dj5"><span class="dj6">￥</span>98<span class="dj7">门店价</span><span class="gb5">￥158</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/9.jpg"/></a>
+                <i class="hz1"></i>
+                <h3 class="dj3">【朝阳区】蟹岛度假村
+                    <p class="dj4">单人野外烧烤1次，休闲体验，欢迎光临</p>
+                    <p class="dj5"><span class="dj6">￥</span>98<span class="dj7">门店价</span><span class="gb5">￥158</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+            <li class="dj1">
+                <a href="#"><img src="img/9.jpg"/></a>
+                <i class="hz1"></i>
+                <h3 class="dj3">【朝阳区】蟹岛度假村
+                    <p class="dj4">单人野外烧烤1次，休闲体验，欢迎光临</p>
+                    <p class="dj5"><span class="dj6">￥</span>98<span class="dj7">门店价</span><span class="gb5">￥158</span></p>
+                </h3>
+                <div class="gb6">
+                    <p class="dj9">16832<span>人已参与</span></p>
+                    <p class="dj10">暂无评价</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="gb clearfix">
+        <a href="#" class="gb1">更多旅游团购，请点击查看</a>
+        <i class="gb2"></i>
+    </div>
+    <div class="dw clearfix">
+        <div class="dw10 clearfix">
+            <h3 class="dw1">最近浏览</h3>
+            <a href="#" class="dw2">清空</a>
+        </div>
+        <div class="dw3">
+            <a href="#"><img src="img/10.jpg"/></a>
+            <div class="dw4">
+                <p>Laker's2人披萨套餐</p>
+                <p class="dw5">￥58<span>148</span></p>
             </div>
         </div>
-        <div class="middle clearfix">
-            <dl class="fl">
-                <dt>获取更新</dt>
-                <dd>邮件订阅</dd>
-                <dd>iPhone/Android</dd>
-                <dd>美团QQ空间</dd>
-                <dd>美团新浪微博</dd>
-                <dd>sitemap</dd>
-                <dd>RSS订阅</dd>
-            </dl>
-            <dl class="fl">
-                <dt>商务合作</dt>
-                <dd>商家合作</dd>
-                <dd>美团商家营销平台</dd>
-                <dd>市场合作</dd>
-                <dd>美团联盟</dd>
-                <dd>廉政邮箱</dd>
-                <dd>lianzheng@meituan.com</dd>
-            </dl>
-            <dl class="fl">
-                <dt>公司信息</dt>
-                <dd>关于美团</dd>
-                <dd>美团承诺</dd>
-                <dd>媒体报道</dd>
-                <dd>加入我们</dd>
-                <dd>法律声明</dd>
-                <dd>用户协议</dd>
-                <dd>营业执照</dd>
-            </dl>
-            <dl class="fl last">
-                <dt>用户帮助</dt>
-                <dd>申请退款</dd>
-                <dd>查看美团券密码</dd>
-                <dd>常见问题</dd>
-                <dd>开放API</dd>
-                <dd>美团云</dd>
-                <dd>反诈骗公告</dd>
-            </dl>
-            <div class="fl contact">
-                <div class="face"></div>
-                <p class="phone">客服电话</p>
-                <p class="number"><strong>400-660-5335</strong>(9:00-22:00)</p>
-                <p>退款、退换货、查看美团券</p>
-                <p><a href="javascript:;">参考教程，轻松搞定</a></p>
-            </div>
-        </div>
-        <div class="bottom">
-            <p>©2015美团网团购 meituan.com 京ICP证070791号 京公网安备11010502025545号 电子公告服务规则</p>
-            <div class="clearfix">
-                <a class="fl beian" href="javascript:;"></a>
-                <a class="fl gongshang" href="javascript:;"></a>
-                <a class="fl alipay" href="javascript:;"></a>
-                <a class="fl qqpay" href="javascript:;"></a>
-                <a class="fl trust" href="javascript:;"></a>
-                <a class="fl customer" href="javascript:;"></a>
+        <div class="dw6">
+            <div class="dw7">
+                <a href="#"><img src="img/11.jpg"/></a>
+                <div class="dw8">
+                    <p>德尔森啤酒烤肉单人自助餐</p>
+                    <p class="dw9">￥55<span>65</span></p>
+                </div>
             </div>
         </div>
     </div>
+    <div class="lz">
+        <a href="#" class="lz1">
+            <i class="lz2"></i>
+            <p>美食</p>
+        </a>
+        <a href="#" class="lz1">
+            <i class="lz3"></i>
+            <p>休闲</p>
+        </a>
+        <a href="#" class="lz1">
+            <i class="lz4"></i>
+            <p>电影</p>
+        </a>
+        <a href="#" class="lz1">
+            <i class="lz5"></i>
+            <p>酒店</p>
+        </a>
+        <a href="#" class="lz1">
+            <i class="lz6"></i>
+            <p>生活</p>
+        </a>
+        <a href="#" class="lz1">
+            <i class="lz7"></i>
+            <p>购物</p>
+        </a>
+        <a href="#" class="lz1">
+            <i class="lz8"></i>
+            <p>丽人</p>
+        </a>
+        <a href="#" class="lz1">
+            <i class="lz9"></i>
+            <p>旅游</p>
+        </a>
+    </div>
+</div>
+
+
+
+<!--崔光宇-->
+<div class="cgy_bottom"><!--总框居中-->
+    <div class="cgy_bottom_nav"><!--总框内容靠左-->
+        <ul class="cgy_ul clearfix">
+            <li class="cgy_cstg fl"><a href="#" >城市团购</a></li>
+            <li class="cgy_cstg fl"><a href="#" >美食团购</a></li>
+            <li class="cgy_cstg fl"><a href="#" >电影团购</a></li>
+            <li class="cgy_cstg fl"><a href="#" >酒店团购</a></li>
+            <li class="cgy_cstg fl"><a href="#" >KTV团购</a></li>
+            <li class="cgy_cstg fl"><a href="#" c>知名品牌</a></li>
+            <li class="cgy_cstg fl" style="width:73px;"><a href="#" >电影票</a></li>
+            <li class="cgy_cstg fl"><a href="#" >热门标签</a></li>
+            <li class="cgy_cstg fl"><a href="#" >今日新单</a></li>
+        </ul>
+        <p class="cgy_p_city"><a href="#">北京团购</a><a href="#">深圳团购</a><a href="#">上海团购</a><a href="#">西安团购</a><a href="#">广州团购</a><a href="#">成都团购</a><a href="#">武汉团购</a><a href="#">杭州团购</a><a href="#">郑州团购</a><a href="#">南京团购</a><a href="#">天津团购</a><a href="#">重庆团购</a><a href="#">沈阳团购</a><a href="#"><br/><a href="#">合肥团购</a><a href="#">哈尔滨团购</a><a href="#">济南团购</a><a href="#">长沙团购</a><a href="#">东莞团购</a><a href="#">大连团购</a><a href="#">福州团购</a><a href="#">石家庄团购</a><a href="#">北京团购</a><a href="#">宁波团购</a><a href="#">太原团购</a><a href="#">苏州团购</a><a href="#">长春团购</a><a href="#"><br /><a href="#">青岛团购</a><a href="#">常州团购</a><a href="#">美团网团购专题</a><a href="#">美团网导购专题</a></p>
+    </div><!--总框内容靠左-->
+</div><!--总框居中-->
+
+<div class="cgy_bottom_boxt">
+    <div class="cgy_bottom_box clearfix"><!--底部总框居中-->
+        <ul class="cgy_bottom_ul fl">
+            <li class="cgy_help">获取更新</li>
+            <li><i class="cgy_sqtk"><a href="#">邮件订阅</a></i></li>
+            <li><i class="cgy_sqtk"><a href="#">Iphone/Android</a></i></li>
+            <li><i class="cgy_sqtk"><a href="#">美团QQ空间</a></i></li>
+            <li><i class="cgy_sqtk"><a href="#">美团新浪微博</a></i></li>
+            <li><i class="cgy_sqtk"><a href="#">Sitemap</a></i></li>
+            <li><i class="cgy_sqtk"><a href="#">RSS订阅器</a></i></li>
+        </ul>
+        <ul class="cgy_bottom_ul fl">
+            <li class="cgy_help">商务合作</li>
+            <li><i class="cgy_sqtk"><a href="#">提供商业信息</a></i></li>
+            <li><i class="cgy_sqtk"><a href="#">美团商家营销平台</a></i></li>
+            <li><i class="cgy_sqtk"><a href="#">市场合作</a></i></li>
+            <li><i class="cgy_sqtk"><a href="#">美团联盟</a></i></li>
+            <li><i class="cgy_sqtk"><a href="#">廉政邮箱</a></i></li>
+            <li><i class="cgy_sqtk"><a href="#">申请退款</a></i></li>
+        </ul>
+        <ul class="cgy_bottom_ul fl">
+            <li class="cgy_help">公司信息</li>
+            <li><i class="cgy_sqtk"><a href="#">关于美团</a></i></li>
+            <li><i class="cgy_sqtk"><a href="#">美团承诺</a></i></li>
+            <li><i class="cgy_sqtk"><a href="#">媒体报道</a></i></li>
+            <li><i class="cgy_sqtk"><a href="#">加入我们</a></i></li>
+            <li><i class="cgy_sqtk"><a href="#">法律声明</a></i></li>
+            <li><i class="cgy_sqtk"><a href="#">用户协议</a></i></li>
+        </ul>
+        <ul class="cgy_bottom_ul fl">
+            <li class="cgy_help">用户帮助</li>
+            <li><i class="cgy_sqtk"><a href="#">申请退款</a></i></li>
+            <li><i class="cgy_sqtk"><a href="#">查看美团券密码</a></i></li>
+            <li><i class="cgy_sqtk"><a href="#">常见问题</a></i></li>
+            <li><i class="cgy_sqtk"><a href="#">开放API</a></i></li>
+            <li><i class="cgy_sqtk"><a href="#">美团云</a></i></li>
+            <li><i class="cgy_sqtk"><a href="#">反诈骗公告</a></i></li>
+        </ul>
+        <div class="cgy_kefu fl">
+            <a href="#" class="tuikuan">退款、退换货、查看美团券</a>
+            <a href="#" class="qingsong">参考教程、轻松搞定</a>
+            <a href="#" class="tele">客服电话：400-200-9632</a>
+            <a href="#" class="time">服务时间：每天0:00——24:00</a>
+        </div>
+    </div><!--底部总框居中-->
+    <p class="cgy_last_font">2014美团团购 meituan.com 京ICP证070791号 京公网安备545124545号 电子公告服务规则</p>
+    <div class="cgy_pics clearfix">
+        <i class="cgy_pica fl"></i>
+        <i class="cgy_picb fl"></i>
+        <i class="cgy_picc fl"></i>
+        <i class="cgy_picd fl"></i>
+        <i class="cgy_pice fl"></i>
+    </div>
+</div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
